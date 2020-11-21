@@ -74,7 +74,7 @@
                         <li><a href="artistIndex">Home</a></li>
                         <li><a href="artistAddPaintings">Add Artwork</a></li>
                         <li><a href="artistPayStub">Pay Stub</a></li>
-                        <li><a href="artist_check.html">Checks</a></li>
+                        <li><a href="artistCheckPage">Checks</a></li>
                     </ul>
                 </div>
             </div>
