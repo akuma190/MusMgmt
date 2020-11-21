@@ -74,7 +74,7 @@ URL: https://www.freshdesignweb.com/ustora/
                             <li><a href="artistIndex">Home</a></li>
                             <li><a href="artistAddPaintings">Add Artwork</a></li>
                             <li><a href="artistPayStub">Pay Stub</a></li>
-                            <li><a href="artist_check.html">Checks</a></li>
+                            <li><a href="artistCheckPage">Checks</a></li>
                         </ul>
                     </ul>
                 </ul>
@@ -105,13 +105,14 @@ URL: https://www.freshdesignweb.com/ustora/
                     <tbody>
                     <c:forEach items="${repo}" var="repo">
                     <tr>
-                        <td><c:out value="${repo.username}" /></td>
-                        <td><c:out value="${repo.username}" /></td>
+                        <td><c:out value="${repo.soldamount}" /></td>
+                        <td><c:out value="${repo.soldamount}" /></td>
                         <td><c:out value="${repo.creationdate}" /></td>
                         <td><c:out value="${repo.solddate}" /></td>
-                        <td><c:out value="${repo.username}" /></td>
+                        <td><c:out value="${repo.soldamount}" /></td>
                         <td><c:out value="${repo.soldamount}" /></td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <input type="button" id="btnExport" value="Export" onclick="Export()" />
