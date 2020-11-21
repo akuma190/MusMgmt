@@ -6,6 +6,7 @@ import museum.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -49,18 +50,41 @@ public class ArtistController {
         return "artist_add_paintings";
     }
 
+    @RequestMapping("/artistCheck/{cheqId}")
+    public String artistCheck(@PathVariable("cheqId") int cheqId,ModelMap model){
+
+        return "artist_check";
+    }
+
+    @RequestMapping("/artistCheckPage")
+    public String artistCheckPage(@SessionAttribute("session") Session session,ModelMap model){
+        ArrayList<report> repo=new ArrayList<report>();
+        if(session.getType().equals("collector")){
+            collector artVar=collectorRepository.findOne(session.getUsername());
+            repo= (ArrayList<report>) reportRepository.findOne(artVar.getCollector_id());
+        }else if(session.getType().equals("artist")){
+            artist artVar=artistRepo.findOne(session.getUsername());
+            repo= (ArrayList<report>) reportRepository.findOne(artVar.getArtist_id());
+        }
+
+        System.out.println(repo);
+        model.put("repo",repo);
+        return "artist_check_page";
+    }
+
     @RequestMapping("/artistPayStub")
     public String artistPayStub(ModelMap model, @SessionAttribute("session") Session session) {
         ArrayList<report> repo=new ArrayList<report>();
         if(session.getType().equals("collector")){
             collector var=collectorRepository.findOne(session.getUsername());
-           repo= (ArrayList<report>) reportRepository.findOne(var.getCollector_id());
+            repo= (ArrayList<report>) reportRepository.findOne(var.getCollector_id());
         }
         if(session.getType().equals("artist")){
             artist var=artistRepo.findOne(session.getUsername());
-           repo= (ArrayList<report>) reportRepository.findOne(var.getArtist_id());
+            repo= (ArrayList<report>) reportRepository.findOne(var.getArtist_id());
         }
         System.out.println(repo);
+        model.put("repo",repo);
         return "artist_pay_stub";
     }
 
