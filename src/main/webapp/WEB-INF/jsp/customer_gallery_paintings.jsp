@@ -35,7 +35,10 @@
     <![endif]-->
   </head>
   <body>
-       
+   
+
+    
+    
     <div class="site-branding-area">
         <div class="container">
             <div class="row">
@@ -46,9 +49,9 @@
                 </div>
                 
                 <div class="col-sm-6">
-                    <!-- <div class="shopping-item">
-                        <a href="cart.html">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
-                    </div> -->
+                    <div class="shopping-item">
+                        <a href="cart.html">Hi Ashish !! - <span class="cart-amunt">Logout</span> </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,21 +70,16 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="owner_index.html">Home</a></li>
-                        <li><a href="owner_artwork_list.html">Artwork List</a></li>
-                        <li><a href="owner_painting_approve.html">New Entries</a></li>
-                        <li><a href="owner_create_event.html">Create Event</a></li>
-                        <li><a href="owner_check_report.html">Check Report</a></li>
-                        <li><a href="owner_manage_paintings.html">Manage Paintings</a></li>
+                        <li><a href="customerIndex">Home</a></li>
+                        <li><a href="customerEvents">Visit Events</a></li>
+                        <li><a href="customerGalleryPaintings">Visit Gallery</a></li>
+                        <li><a href="customerReceiptPage">Receipts</a></li>
                     </ul>
                 </div>  
             </div>
         </div>
     </div> <!-- End mainmenu area -->
-    
-
-    
-    
+        
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -91,13 +89,13 @@
                         <div class="product-upper">
                             <img src="img/product-2.jpg" alt="">
                         </div>
-                        <h2><a href="">Painting</a></h2>
+                        <h2>Painting</h2>
                         <div class="product-carousel-price">
-                            <ins>$899.00</ins> 
+                            <ins>$899.00</ins>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Get details</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
                         </div>                       
                     </div>
                 </div>
@@ -106,13 +104,13 @@
                         <div class="product-upper">
                             <img src="img/product-1.jpg" alt="">
                         </div>
-                        <h2><a href="">Painting</a></h2>
+                        <h2>Painting</h2>
                         <div class="product-carousel-price">
-                            <ins>$899.00</ins> 
+                            <ins>$899.00</ins>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Get details</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
                         </div>                       
                     </div>
                 </div>
@@ -121,13 +119,13 @@
                         <div class="product-upper">
                             <img src="img/product-3.jpg" alt="">
                         </div>
-                        <h2><a href="">Painting</a></h2>
+                        <h2>Painting</h2>
                         <div class="product-carousel-price">
-                            <ins>$899.00</ins> 
+                            <ins>$899.00</ins>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Get details</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
                         </div>                       
                     </div>
                 </div>
@@ -136,13 +134,13 @@
                         <div class="product-upper">
                             <img src="img/product-4.jpg" alt="">
                         </div>
-                        <h2><a href="">Painting</a></h2>
+                        <h2>Painting</h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Get details</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
                         </div>                       
                     </div>
                 </div>
@@ -151,13 +149,13 @@
                         <div class="product-upper">
                             <img src="img/product-2.jpg" alt="">
                         </div>
-                        <h2><a href="">Painting</a></h2>
+                        <h2>Painting</h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Get details</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
                         </div>                       
                     </div>
                 </div>
@@ -166,17 +164,31 @@
                         <div class="product-upper">
                             <img src="img/product-1.jpg" alt="">
                         </div>
-                        <h2><a href="">Painting</a></h2>
+                        <h2>Painting</h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Get details</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
                         </div>                       
                     </div>
                 </div>
-
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-shop-product">
+                        <div class="product-upper">
+                            <img src="img/product-3.jpg" alt="">
+                        </div>
+                        <h2>Painting</h2>
+                        <div class="product-carousel-price">
+                            <ins>$899.00</ins>
+                        </div>  
+                        
+                        <div class="product-option-shop">
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="customer_painting_buy.html">Buy</a>
+                        </div>                       
+                    </div>
+                </div>
 
             </div>
             
@@ -215,17 +227,17 @@
             <div class="row">
                 <div class="col-md-8">
                     <!-- <div class="copyright"> -->
-                    <!-- <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p> -->
+                        <!-- <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p> -->
                     <!-- </div> -->
                 </div>
-
+                
                 <!-- <div class="col-md-4"> -->
-                <!-- <div class="footer-card-icon"> -->
-                <!-- <i class="fa fa-cc-discover"></i> -->
-                <!-- <i class="fa fa-cc-mastercard"></i> -->
-                <!-- <i class="fa fa-cc-paypal"></i> -->
-                <!-- <i class="fa fa-cc-visa"></i> -->
-                <!-- </div> -->
+                    <!-- <div class="footer-card-icon"> -->
+                        <!-- <i class="fa fa-cc-discover"></i> -->
+                        <!-- <i class="fa fa-cc-mastercard"></i> -->
+                        <!-- <i class="fa fa-cc-paypal"></i> -->
+                        <!-- <i class="fa fa-cc-visa"></i> -->
+                    <!-- </div> -->
                 <!-- </div> -->
             </div>
         </div>

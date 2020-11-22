@@ -107,10 +107,10 @@ public class ArtistController {
         System.out.println(session.getType());
         if(session.getType().equals("collector")){
             collector artVar=collectorRepository.findOne(session.getUsername());
-            art.setArt_col_id(artVar.getCollector_id());
+            art.setArtcolid(artVar.getCollector_id());
         }else if(session.getType().equals("artist")){
             artist artVar=artistRepo.findOne(session.getUsername());
-            art.setArt_col_id(artVar.getArtist_id());
+            art.setArtcolid(artVar.getArtist_id());
         }
         System.out.println(art);
         artworkRepository.save(art);
