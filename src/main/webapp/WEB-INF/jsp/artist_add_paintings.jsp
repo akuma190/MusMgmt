@@ -73,6 +73,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="artistIndex">Home</a></li>
                         <li><a href="artistAddPaintings">Add Artwork</a></li>
+                        <li><a href="artistPaintApprove">Offers</a></li>
                         <li><a href="artistPayStub">Pay Stub</a></li>
                         <li><a href="artistCheckPage">Checks</a></li>
                     </ul>
@@ -97,7 +98,7 @@
                             <div class="woocommerce-info">Enter the artwork details
                             </div>
 
-                            <form id="coupon-collapse-wrap" method="post" class="checkout_coupon collapse" >
+                            <form id="coupon-collapse-wrap" method="post" class="checkout_coupon collapse">
 
                                 <p class="form-row form-row-first">
                                     <input type="text" value="" id="coupon_code" placeholder="Coupon code"
@@ -111,7 +112,7 @@
                                 <div class="clear"></div>
                             </form>
 
-                            <form  action="addArtistPaintings" class="checkout" method="post"
+                            <form enctype="multipart/form-data" action="#" class="checkout" method="post"
                                 name="checkout">
 
                                 <div id="customer_details" class="col2-set">
@@ -120,25 +121,25 @@
 
                                             <p id="billing_first_name_field"
                                                 class="form-row form-row-first validate-required">
-                                                <label class="" for="idArtwork_name">Artwork Name
+                                                <label class="" for="billing_first_name">Artwork Name 
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="idArtwork_name"
-                                                    name="artwork_name" class="input-text ">
+                                                <input type="text" value="" placeholder="" id="billing_first_name"
+                                                    name="billing_first_name" class="input-text ">
                                             </p>
 
                                             <p id="billing_last_name_field"
                                                 class="form-row form-row-last validate-required">
-                                                <label class="" for="idPrice">Intial Price
+                                                <label class="" for="billing_last_name">Intial Price 
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="idPrice"
-                                                    name="price" class="input-text ">
+                                                <input type="text" value="" placeholder="" id="billing_last_name"
+                                                    name="billing_last_name" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
                                             <p id="billing_company_field" class="form-row form-row-wide">
-                                                <label class="" for="idCreation_date">Start Date</label>
-                                                <input type="date" value="" placeholder="" id="idCreation_date"
-                                                    name="creation_date" style="width: 1170px;">
+                                                <label class="" for="billing_company">Start Date</label>
+                                                <input type="date" value="" placeholder="" id="billing_company"
+                                                    name="billing_company" style="width: 1170px;">
                                             </p>
 
 
