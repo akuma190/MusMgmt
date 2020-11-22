@@ -73,6 +73,7 @@ URL: https://www.freshdesignweb.com/ustora/
                         <ul class="nav navbar-nav">
                             <li><a href="artistIndex">Home</a></li>
                             <li><a href="artistAddPaintings">Add Artwork</a></li>
+                            <li><a href="artistPaintApprove">Offers</a></li>
                             <li><a href="artistPayStub">Pay Stub</a></li>
                             <li><a href="artistCheckPage">Checks</a></li>
                         </ul>
