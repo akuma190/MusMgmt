@@ -124,10 +124,10 @@ public class MainController {
                 return "artist_index";
             }
             if(value.getAuthority().equals("salesperson")){
-                return "owner_index";
+                return "emp_index";
             }
             if(value.getAuthority().equals("customer")){
-                return "owner_index";
+                return "customer_index";
             }
 
         }else{
