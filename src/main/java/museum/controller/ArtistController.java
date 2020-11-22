@@ -50,9 +50,18 @@ public class ArtistController {
         return "artist_add_paintings";
     }
 
-    @RequestMapping("/artistCheck/{cheqId}")
-    public String artistCheck(@PathVariable("cheqId") int cheqId,ModelMap model){
+    @RequestMapping("/artistPaintApprove")
+    public String artistPaintApprove(){
 
+        return "artist_paint_approve";
+    }
+
+    @RequestMapping("/artistCheck/{cheqId}")
+    public String artistCheck(@PathVariable("cheqId") Integer cheqId,ModelMap model){
+        System.out.println(cheqId);
+        report repo=reportRepository.findByReportId(cheqId);
+        System.out.println(repo);
+        model.put("repo",repo);
         return "artist_check";
     }
 
