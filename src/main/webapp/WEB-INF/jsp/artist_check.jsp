@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -107,7 +108,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="img/logo.png" style="width:100%; max-width:300px;">
+                                <img src="../img/logo.png" style="width:100%; max-width:300px;">
                             </td>
                             
                             <td>
@@ -185,7 +186,7 @@
                 </td>
                 
                 <td>
-                    $340
+                    ${repo.soldamount}
                 </td>
             </tr>
 
