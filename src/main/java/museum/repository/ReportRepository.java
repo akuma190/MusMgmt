@@ -13,4 +13,7 @@ import java.util.List;
 public interface ReportRepository extends CrudRepository<report,Integer> {
     @Query(value="select * from report where Art_col_id =:art_col_id",nativeQuery=true)
     List<report> findOne(@Param("art_col_id") Integer art_col_id);
+
+    @Query(value="select * from report where report_id =:reportId",nativeQuery=true)
+    report findByReportId(@Param("reportId") Integer reportId);
 }
