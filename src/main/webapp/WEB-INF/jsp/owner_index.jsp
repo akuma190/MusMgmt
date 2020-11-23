@@ -65,12 +65,12 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="owner_index.html">Home</a></li>
-                        <li><a href="owner_artwork_list.jsp">Artwork List</a></li>
-                        <li><a href="owner_painting_approve.html">New Entries</a></li>
-                        <li><a href="owner_create_event.html">Create Event</a></li>
-                        <li><a href="owner_check_report.html">Check Report</a></li>
-                        <li><a href="owner_manage_paintings.html">Manage Paintings</a></li>
+                        <li><a href="ownerIndex">Home</a></li>
+                        <li><a href="ownerArtworkList">Artwork List</a></li>
+                        <li><a href="ownerPaintingsApprove">New Entries</a></li>
+                        <li><a href="ownerCreateEvent">Create Event</a></li>
+                        <li><a href="ownerCheckReport">Check Report</a></li>
+                        <li><a href="ownerManagePaintings">Manage Paintings</a></li>
                     </ul>
                 </div>  
             </div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--
 	ustora by freshdesignweb.com
@@ -19,15 +20,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +45,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./"><img src="../img/logo.png"></a></h1>
                     </div>
                 </div>
 
@@ -66,12 +67,12 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="owner_index.html">Home</a></li>
-                        <li><a href="owner_artwork_list.html">Artwork List</a></li>
-                        <li><a href="owner_painting_approve.html">New Entries</a></li>
-                        <li><a href="owner_create_event.html">Create Event</a></li>
-                        <li><a href="owner_check_report.html">Check Report</a></li>
-                        <li><a href="owner_manage_paintings.html">Manage Paintings</a></li>
+                        <li><a href="ownerIndex">Home</a></li>
+                        <li><a href="ownerArtworkList">Artwork List</a></li>
+                        <li><a href="ownerPaintingsApprove">New Entries</a></li>
+                        <li><a href="ownerCreateEvent">Create Event</a></li>
+                        <li><a href="ownerCheckReport">Check Report</a></li>
+                        <li><a href="ownerManagePaintings">Manage Paintings</a></li>
                     </ul>
                 </div>
             </div>
@@ -93,41 +94,41 @@
                             <div class="col-sm-4">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="img/product-2.jpg" alt="">
+                                        <img src="../img/product-2.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">Painting Name</h2>
+                                    <h2 class="product-name">${repo.artworkname}</h2>
                                     <div class="product-inner-price">
-                                        <ins>$700.00</ins>
+                                        <ins>$${repo.price}</ins>
                                     </div>
 
-                                    <form action="" class="cart">
+                                    <form action="../actionAddPainting" class="cart">
                                         <div class="quantity">
                                             <p id="billing_country_field"
                                                 class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                                <label class="" for="billing_country">Sales Person Name <abbr title="required"
+                                                <label class="" for="idSalesname">Sales Person Name <abbr title="required"
                                                         class="required">*</abbr>
                                                 </label>
-                                                <select class="country_to_state country_select" id="billing_country"
-                                                    name="billing_country">
+                                                <select class="country_to_state country_select" id="idSalesname"
+                                                    name="salesname">
                                                     <option value="">Select a SalesPerson</option>
-                                                    <option value="AX">Åland Islands</option>
-                                                    <option value="AF">Afghanistan</option>
-                                                    <option value="AL">Albania</option>
+                                                    <c:forEach items="${arr}" var="arr">
+                                                        <option value="${arr.staffid}"><c:out value="${arr.staffname}" /></option>
+                                                    </c:forEach>
                                                 </select>
                                             </p>
                                         </div>
+                                        <input type="hidden" id="artId" name="artId" value="${repo.artworkid}">
                                         <button class="add_to_cart_button" type="submit">Add to Gallery</button>
                                     </form>
 
                                     <div role="tabpanel">
                                         <ul class="product-tab" role="tablist">
-                                            <li role="presentation" class="active"><a href="#home" aria-controls="home"
-                                                    role="tab" data-toggle="tab">Painting Description</a></li>
+                                            <h2>Painting Description</h2>
                                         </ul>
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="home">
@@ -136,67 +137,62 @@
             
                                                         <tr class="cart-subtotal">
                                                             <th>Id</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artworkid}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Painting Name</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artworkname}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Artist or Collector Name</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artcolid}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Creation Date</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.creationdate}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Painting Type</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Painting Style</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>medium</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Type</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Quoted Price</th>
-                                                            <td><span class="amount">£15.00</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="cart-subtotal">
-                                                            <th>Action</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.price}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Length</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Width</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
                                                         <tr class="cart-subtotal">
                                                             <th>Height</th>
-                                                            <td><span class="amount">£15.00</span>
+                                                            <td><span class="amount">${repo.artist_type}</span>
                                                             </td>
                                                         </tr>
             
@@ -244,14 +240,14 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <!-- jQuery sticky menu -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
 
     <!-- jQuery easing -->
-    <script src="js/jquery.easing.1.3.min.js"></script>
+    <script src="../js/jquery.easing.1.3.min.js"></script>
 
     <!-- Main Script -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
     
 </body>
 

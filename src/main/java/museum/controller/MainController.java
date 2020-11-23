@@ -64,43 +64,43 @@ public class MainController {
         return "invoice";
     }
 
-    @RequestMapping("/getData")
-    @ResponseBody
-    public String getData(){
-        ArrayList<Test> arr=new ArrayList<Test>();
-        Test data=new Test();
-        data.setAge(21);
-        data.setName("Ashish");
-        Test data1=new Test();
-        data1.setAge(22);
-        data1.setName("Mishra");
-        arr.add(data);
-        arr.add(data1);
-        return arr.toString();
-    }
+//    @RequestMapping("/getData")
+//    @ResponseBody
+//    public String getData(){
+//        ArrayList<Test> arr=new ArrayList<Test>();
+//        Test data=new Test();
+//        data.setAge(21);
+//        data.setName("Ashish");
+//        Test data1=new Test();
+//        data1.setAge(22);
+//        data1.setName("Mishra");
+//        arr.add(data);
+//        arr.add(data1);
+//        return arr.toString();
+//    }
 
-    @RequestMapping("/getFullData")
-    @ResponseBody
-    public List<Employee> getFullData(){
-        return empServ.getAllEmployee();
-    }
+//    @RequestMapping("/getFullData")
+//    @ResponseBody
+//    public List<Employee> getFullData(){
+//        return empServ.getAllEmployee();
+//    }
 
-    @RequestMapping("/getTableData")
-    @ResponseBody
-    public List<Ashish> getTableData(){
-        return (List<Ashish>) ashRepo.findAll();
-    }
-
-    @RequestMapping("/testInsert")
-    public String testInsert(){
-        artist art=new artist();
-        art.setArtist_id(1);
-        art.setArtist_name("ashish");
-
-        art.setCreation_date("dd");
-        artistRepo.save(art);
-        return "invoice";
-    }
+//    @RequestMapping("/getTableData")
+//    @ResponseBody
+//    public List<Ashish> getTableData(){
+//        return (List<Ashish>) ashRepo.findAll();
+//    }
+//
+//    @RequestMapping("/testInsert")
+//    public String testInsert(){
+//        artist art=new artist();
+//        art.setArtist_id(1);
+//        art.setArtist_name("ashish");
+//
+//        art.setCreation_date("dd");
+//        artistRepo.save(art);
+//        return "invoice";
+//    }
 
     //validating the login details.
     @RequestMapping("/checkLogin")

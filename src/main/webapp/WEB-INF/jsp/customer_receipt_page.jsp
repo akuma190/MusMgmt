@@ -92,7 +92,7 @@
                                 <div class="product-f-image">
                                     <img src="img/receipt.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="customerReceipt" class="view-details-link"><i class="fa fa-link"></i> See Receipt</a>
+                                        <a href="customerReceipt" class="view-details-link" target="_blank"><i class="fa fa-link"></i> See Receipt</a>
                                     </div>
                                 </div>
                                 
@@ -106,7 +106,7 @@
                                 <div class="product-f-image">
                                     <img src="img/receipt.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="customerReceipt" class="view-details-link"><i class="fa fa-link"></i> See Receipt</a>
+                                        <a href="customerReceipt" class="view-details-link" target="_blank"><i class="fa fa-link"></i> See Receipt</a>
                                     </div>
                                 </div>
                                 

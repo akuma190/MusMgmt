@@ -23,4 +23,5 @@ public class artwork {
     String artist_type;
     int price;
     String status;
+    int salesperson;
 }

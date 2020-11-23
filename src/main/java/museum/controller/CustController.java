@@ -1,10 +1,16 @@
 package museum.controller;
 
+import museum.model.event;
+import museum.model.eventArtwork;
 import museum.repository.*;
 import museum.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class CustController {
@@ -33,19 +39,30 @@ public class CustController {
     @Autowired
     ReportRepository reportRepository;
 
+    @Autowired
+    EventRepository eventRepository;
+
+    @Autowired
+    EventArtWorkRepository eventArtWorkRepository;
+
     //to generate the links of all the artist pages pages.
     @RequestMapping("/customerIndex")
     public String customerIndex(){
         return "customer_index";
     }
 
-    @RequestMapping("/customerEventPaintings")
-    public String customerEventPaintings(){
+    @RequestMapping("/customerEventPaintings/{eventId}")
+    public String customerEventPaintings(@PathVariable Integer eventId){
+        System.out.println(eventId);
+        List<eventArtwork> evenArt=eventArtWorkRepository.findOne(eventId);
+        System.out.println(evenArt);
         return "customer_event_paintings";
     }
 
     @RequestMapping("/customerEvents")
-    public String customerEvents(){
+    public String customerEvents(ModelMap model){
+        List<event> eventList= (List<event>) eventRepository.findAll();
+        model.put("eventList",eventList);
         return "customer_events";
     }
 

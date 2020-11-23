@@ -11,7 +11,7 @@ URL: https://www.freshdesignweb.com/ustora/
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shop Page- Ustora Demo</title>
+    <title>Checkout Page - Ustora Demo</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
@@ -39,6 +39,7 @@ URL: https://www.freshdesignweb.com/ustora/
 </head>
 
 <body>
+
 
 <div class="site-branding-area">
     <div class="container">
@@ -86,66 +87,82 @@ URL: https://www.freshdesignweb.com/ustora/
 
 
 
-
 <div class="single-product-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <form enctype="multipart/form-data" action="addNewEvent" class="checkout" method="post"
-                  name="checkout">
-                <c:forEach items="${artRepo}" var="artRepo">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="single-shop-product">
-                            <div class="product-upper">
-                                <img src="img/product-2.jpg" alt="">
-                            </div>
-                            <h2><a href="">${artRepo.artworkname}</a></h2>
-                            <div class="product-carousel-price">
-                                <ins>$${artRepo.price}</ins>
-                            </div>
-
-                            <h3 id="check1">
-                                <input type="checkbox" value="${artRepo.artworkid}" name="checkBoxes"
-                                       class="input-checkbox" id="${artRepo.artworkid}">
-                            </h3>
-                        </div>
-                    </div>
-                </c:forEach>
-                <input type="hidden" value="${max}" placeholder="" id="idEventId"
-                       name="eventId" class="input-text " >
-                <input type="submit" data-value="Submit Event" value="Submit Event" id="place_order"
-                       name="woocommerce_checkout_place_order" class="button alt">
-            </form>
-        </div>
-
-        <div class="form-row place-order">
 
 
-
-        </div>
-
-        <div class="row">
             <div class="col-md-12">
-                <div class="product-pagination text-center">
-                    <nav>
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="product-content-right">
+                    <div class="woocommerce">
+
+                        <div class="woocommerce-info">Below Are Your Event Details
+                        </div>
+
+
+
+                        <form enctype="multipart/form-data" action="ownerAddPaintings" class="checkout" method="post"
+                              name="checkout">
+
+                            <div id="customer_details" class="col2-set">
+                                <div class="col-6">
+                                    <div class="woocommerce-billing-fields">
+                                        <p id="billing_country_field"
+                                           class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
+                                            <label class="" for="idEventtype">Event Type
+                                            </label>
+                                            <input type="text" value="${eve.eventtype}" placeholder="" id=""
+                                                   name="" class="input-text " disabled>
+                                            <input type="hidden" value="${eve.eventtype}" placeholder="" id="idEventtype"
+                                                   name="eventtype" class="input-text " >
+                                        </p>
+
+                                        <p id="billing_first_name_field"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idEventname">Event Name
+                                            </label>
+                                            <input type="text" value="${eve.eventname}" placeholder="" id=""
+                                                   name="" class="input-text " disabled>
+                                            <input type="hidden" value="${eve.eventname}" placeholder="" id="idEventname"
+                                                   name="eventname" class="input-text " >
+                                        </p>
+
+                                        <p id="billing_artist_field"
+                                           class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated" >
+                                            <label class="" for="idArtistid">Event Type
+                                            </label>
+                                            <input type="text" value="${eve.artistid}" placeholder="" id=""
+                                                   name="" class="input-text " disabled>
+                                            <input type="hidden" value="${eve.artistid}" placeholder="" id="idArtistid"
+                                                   name="artistid" class="input-text " >
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <p id="billing_company_field" class="form-row form-row-wide">
+                                            <label class="" for="idCreationdate">Start Date</label>
+                                            <input type="text" value="${eve.creationdate}" placeholder="" id=""
+                                                   name="" class="input-text " disabled>
+                                            <input type="hidden" value="${eve.creationdate}" placeholder="" id="idCreationdate"
+                                                   name="creationdate" class="input-text " >
+                                        </p>
+
+
+                                        <div class="form-row place-order">
+
+                                            <input type="submit" data-value="Add Paintings" value="Add Paintings" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,6 +207,18 @@ URL: https://www.freshdesignweb.com/ustora/
 
 <!-- Main Script -->
 <script src="js/main.js"></script>
+<script>
+    function changetextbox()
+    {
+        if (document.getElementById("idEventtype").value === "single") {
+            document.getElementById("myDiv").style.display="block";
+            // alert("hello");
+        }
+        else {
+            document.getElementById("myDiv").style.display="none";
+        }
+    }
+</script>
 </body>
 
 </html>
