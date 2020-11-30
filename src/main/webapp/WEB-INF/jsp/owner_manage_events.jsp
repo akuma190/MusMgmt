@@ -40,7 +40,6 @@ URL: https://www.freshdesignweb.com/ustora/
 
 <body>
 
-
 <div class="site-branding-area">
     <div class="container">
         <div class="row">
@@ -88,87 +87,54 @@ URL: https://www.freshdesignweb.com/ustora/
 
 
 
-<div class="single-product-area">
+<div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-
-
             <div class="col-md-12">
-                <div class="product-content-right">
-                    <div class="woocommerce">
-
-                        <div class="woocommerce-info">Below Are Your Event Details
-                        </div>
-
-
-
-                        <form enctype="multipart/form-data" action="ownerAddPaintings" class="checkout" method="post"
-                              name="checkout">
-
-                            <div id="customer_details" class="col2-set">
-                                <div class="col-6">
-                                    <div class="woocommerce-billing-fields">
-                                        <p id="billing_country_field"
-                                           class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                            <label class="" for="idEventtype">Event Type
-                                            </label>
-                                            <input type="text" value="${eve.eventtype}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.eventtype}" placeholder="" id="idEventtype"
-                                                   name="eventtype" class="input-text " >
-                                        </p>
-
-                                        <p id="billing_first_name_field"
-                                           class="form-row form-row-first validate-required">
-                                            <label class="" for="idEventname">Event Name
-                                            </label>
-                                            <input type="text" value="${eve.eventname}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.eventname}" placeholder="" id="idEventname"
-                                                   name="eventname" class="input-text " >
-                                        </p>
-
-                                        <p id="billing_artist_field"
-                                           class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated" >
-                                            <label class="" for="idArtistid">Event Type
-                                            </label>
-                                            <input type="text" value="${eve.artistid}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.artistid}" placeholder="" id="idArtistid"
-                                                   name="artistid" class="input-text " >
-                                        </p>
-
-
-                                        <div class="clear"></div>
-
-                                        <p id="billing_company_field" class="form-row form-row-wide">
-                                            <label class="" for="idCreationdate">Start Date</label>
-                                            <input type="text" value="${eve.creationdate}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.creationdate}" placeholder="" id="idCreationdate"
-                                                   name="creationdate" class="input-text " >
-                                        </p>
-
-
-                                        <div class="form-row place-order">
-
-                                            <input type="submit" data-value="Add Paintings" value="Add Paintings" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
-
-                                        </div>
-
+                <table class="shop_table" id="tblCustomers">
+                    <thead>
+                    <tr>
+                        <th class="product-name">Event Id</th>
+                        <th class="product-total">Event Name</th>
+                        <th class="product-total">Event Type</th>
+                        <th class="product-total">Creation Date</th>
+                        <th class="product-total">Artist Name</th>
+                        <th class="product-total">Paintings Remaining</th>
+                        <th class="product-total" style="width: 35%;">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${hash}" var="hash">
+                        <tr>
+                            <td><c:out value="${hash.key.eventid}" /></td>
+                            <td><c:out value="${hash.key.eventname}" /></td>
+                            <td><c:out value="${hash.key.eventtype}" /></td>
+                            <td><c:out value="${hash.key.creationdate}" /></td>
+                            <td><c:out value="${hash.key.artistid}" /></td>
+                            <td><c:out value="${hash.value}" /></td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form action="deleteEvent/${hash.key.eventid}" method="post">
+                                            <input type="hidden" id="artId" name="artId" value="">
+                                            <button type="submit" class="btn btn-danger">Reject</button>
+                                        </form>
                                     </div>
                                 </div>
-
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <input type="button" id="btnExport" value="Export" onclick="Export()" />
             </div>
         </div>
     </div>
-</div>
+</div> <!-- End main content area -->
+
+
+
 
 
 
@@ -208,16 +174,26 @@ URL: https://www.freshdesignweb.com/ustora/
 
 <!-- Main Script -->
 <script src="js/main.js"></script>
-<script>
-    function changetextbox()
-    {
-        if (document.getElementById("idEventtype").value === "single") {
-            document.getElementById("myDiv").style.display="block";
-            // alert("hello");
-        }
-        else {
-            document.getElementById("myDiv").style.display="none";
-        }
+
+<!-- Slider -->
+<script type="text/javascript" src="js/bxslider.min.js"></script>
+<script type="text/javascript" src="js/script.slider.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script type="text/javascript">
+    function Export() {
+        html2canvas(document.getElementById('tblCustomers'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Table.pdf");
+            }
+        });
     }
 </script>
 </body>

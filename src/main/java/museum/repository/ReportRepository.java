@@ -16,4 +16,10 @@ public interface ReportRepository extends CrudRepository<report,Integer> {
 
     @Query(value="select * from report where report_id =:reportId",nativeQuery=true)
     report findByReportId(@Param("reportId") Integer reportId);
+
+    @Query(value="select * from report where customer_id =:custId",nativeQuery=true)
+    List<report> findAllByCustomer(@Param("custId") Integer custId);
+
+    @Query(value="select * from report order by sold_date",nativeQuery=true)
+    List<report> findBySellDate();
 }

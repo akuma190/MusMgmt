@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Museum Login</title>
+    <title>Museum Register</title>
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
                             <img src="/img/logo.png" alt="logo" class="logo" style="width:200px;height:100px">
                         </div>
                         <p class="login-card-description">Sign into your account</p>
-                        <form method="post" action="checkLogin">
+                        <form method="post" action="newRegister">
                             <div class="form-group">
                                 <label for="idUsername" class="sr-only">User Name</label>
                                 <input type="text" name="username" id="idUsername" class="form-control" placeholder="User Name">
@@ -34,21 +34,34 @@
                                 <label for="idPassword" class="sr-only">Password</label>
                                 <input type="password" name="password" id="idPassword" class="form-control" placeholder="***********">
                             </div>
-                            <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                            <div class="form-group">
+                                <label for="idfirstname" class="sr-only">First Name</label>
+                                <input type="text" name="firstname" id="idfirstname" class="form-control" placeholder=" First Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="idlastname" class="sr-only">User Name</label>
+                                <input type="text" name="lastname" id="idlastname" class="form-control" placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Select Type</label>
+                                <select class="form-control" id="sel1" name="type">
+                                    <option selected>Select Type</option>
+                                    <option value="artist">Artist</option>
+                                    <option value="collector">Collector</option>
+                                    <option value="customer">Customer</option>
+                                </select>
+                            </div>
+                            <input name="Register" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Register">
                         </form>
                         <%--                <a href="#!" class="forgot-password-link">Forgot password?</a>--%>
                         <c:if test="${status == 'not_exists'}">
 
-                                This username is already being used, please enter a different username.
-                                <!--button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button-->
+                            This username is already being used, please enter a different username.
+                            <!--button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button-->
                         </c:if>
-                        <p class="login-card-footer-text">Don't have an account? <a href="register" class="text-reset">Register here</a></p>
-                        <nav class="login-card-footer-nav">
-                            <a href="#!">Terms of use.</a>
-                            <a href="#!">Privacy policy</a>
-                        </nav>
+
                     </div>
                 </div>
             </div>

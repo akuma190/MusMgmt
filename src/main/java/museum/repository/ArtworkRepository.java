@@ -27,4 +27,10 @@ public interface ArtworkRepository extends CrudRepository<artwork,Integer> {
     @Query(value="select * from artwork where status='in_museum'",nativeQuery=true)
     List<artwork> findAllForEvent();
 
+    @Query(value="select * from artwork where status='in_discussion' and Art_col_id=:artId",nativeQuery=true)
+    List<artwork> findForArtistApp(@Param("artId") int artId);
+
+    @Query(value="select * from artwork where  curdate()-creation_date>=180",nativeQuery=true)
+    List<artwork> findForManageArt();
+
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--
 	ustora by freshdesignweb.com
@@ -49,7 +50,9 @@
                 </div>
 
                 <div class="col-sm-6">
-
+                    <div class="shopping-item">
+                        <a href="cart.html">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,26 +179,26 @@
 
 
 
-    <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- <div class="copyright"> -->
-                    <!-- <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p> -->
-                    <!-- </div> -->
-                </div>
+<%--    <div class="footer-bottom-area">--%>
+<%--        <div class="container">--%>
+<%--            <div class="row">--%>
+<%--                <div class="col-md-8">--%>
+<%--                    <!-- <div class="copyright"> -->--%>
+<%--                    <!-- <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p> -->--%>
+<%--                    <!-- </div> -->--%>
+<%--                </div>--%>
 
-                <!-- <div class="col-md-4"> -->
-                <!-- <div class="footer-card-icon"> -->
-                <!-- <i class="fa fa-cc-discover"></i> -->
-                <!-- <i class="fa fa-cc-mastercard"></i> -->
-                <!-- <i class="fa fa-cc-paypal"></i> -->
-                <!-- <i class="fa fa-cc-visa"></i> -->
-                <!-- </div> -->
-                <!-- </div> -->
-            </div>
-        </div>
-    </div> <!-- End footer bottom area -->
+<%--                <!-- <div class="col-md-4"> -->--%>
+<%--                <!-- <div class="footer-card-icon"> -->--%>
+<%--                <!-- <i class="fa fa-cc-discover"></i> -->--%>
+<%--                <!-- <i class="fa fa-cc-mastercard"></i> -->--%>
+<%--                <!-- <i class="fa fa-cc-paypal"></i> -->--%>
+<%--                <!-- <i class="fa fa-cc-visa"></i> -->--%>
+<%--                <!-- </div> -->--%>
+<%--                <!-- </div> -->--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div> <!-- End footer bottom area -->--%>
 
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>

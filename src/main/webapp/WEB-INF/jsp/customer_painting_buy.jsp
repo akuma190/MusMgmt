@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--
 	ustora by freshdesignweb.com
@@ -10,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Product Page - Ustora Demo</title>
+    <title>Museum Management</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
@@ -19,15 +20,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,13 +45,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./"><img src="../img/logo.png"></a></h1>
                     </div>
                 </div>
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Hi Ashish !! - <span class="cart-amunt">Logout</span> </a>
+                        <a href="/">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
                     </div>
                 </div>
             </div>
@@ -70,10 +71,10 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="customerIndex">Home</a></li>
-                        <li><a href="customerEvents">Visit Events</a></li>
-                        <li><a href="customerGalleryPaintings">Visit Gallery</a></li>
-                        <li><a href="customerReceiptPage">Receipts</a></li>
+                        <li><a href="../customerIndex">Home</a></li>
+                        <li><a href="../customerEvents">Visit Events</a></li>
+                        <li><a href="../customerGalleryPaintings">Visit Gallery</a></li>
+                        <li><a href="../customerReceiptPage">Receipts</a></li>
                     </ul>
                 </div>  
             </div>
@@ -95,27 +96,28 @@
                             <div class="col-sm-4">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="img/product-2.jpg" alt="">
+                                        <img src="../img/product-2.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">Painting Name</h2>
+                                    <h2 class="product-name">${art.artworkname}</h2>
                                     <div class="product-inner-price">
-                                        <ins>$700.00</ins>
+                                        <ins>$${art.price}</ins>
                                     </div>
 
-                                    <form action="" class="cart">
+                                    <form action="../buyFinalPainitngs" class="cart">
                                         <div class="quantity">
                                             <p class="form-row form-row-first">
-                                                <label for="username">Quote Price <span class="required">*</span>
+                                                <label for="idPrice">Quote Price <span class="required">*</span>
                                                 </label>
-                                                <input type="text" id="username" name="username" class="input-text">
+                                                <input type="text" id="idPrice" name="price" class="input-text">
                                             </p>
                                         </div>
-                                        <button class="add_to_cart_button" type="submit">Add to Gallery</button>
+                                        <input type="hidden" id="idArtId" name="artId" class="input-text" value="${art.artworkid}">
+                                        <button class="add_to_cart_button" type="submit">Buy Painting</button>
                                     </form>
                                 </div>
                             </div>
@@ -155,14 +157,14 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <!-- jQuery sticky menu -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
 
     <!-- jQuery easing -->
-    <script src="js/jquery.easing.1.3.min.js"></script>
+    <script src="../js/jquery.easing.1.3.min.js"></script>
 
     <!-- Main Script -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
     
 </body>
 

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Museum Management</title>
     
     <style>
     .invoice-box {
@@ -112,8 +112,8 @@
                             </td>
                             
                             <td>
-                                Invoice id: 123<br>
-                                Created: January 1, 2015<br>
+                                Receipt Number: ${repo.reportid*10}<br>
+                                Created: ${repo.solddate}<br>
                             </td>
                         </tr>
                     </table>
@@ -125,14 +125,14 @@
                     <table>
                         <tr>
                             <td>
-                                MuseumMgmt, Inc.<br>
+                                ${user.firstname} ${user.lastname}<br>
                                 80 Hoyt Street<br>
                                 Kearny 07032, NJ
                             </td>
                             
                             <td>
-                                Artist or Collector<br>
-                                Artist or collector name<br>
+                                ${artUser.firstname} ${artUser.lastname}<br>
+                                Newark Public Museum,Newark,NJ 07102<br>
                                 name@museum.com
                             </td>
                         </tr>
@@ -152,11 +152,11 @@
             
             <tr class="details">
                 <td>
-                    Check
+                    Receipt Number
                 </td>
                 
                 <td>
-                    invoice no*10
+                    ${repo.reportid*10}
                 </td>
             </tr>
             
@@ -176,7 +176,7 @@
                 </td>
                 
                 <td>
-                    $300.00
+                    $${artWo.price}
                 </td>
             </tr>
             
@@ -186,17 +186,27 @@
                 </td>
                 
                 <td>
-                    ${repo.soldamount}
+                    $${repo.soldamount}
                 </td>
             </tr>
 
             <tr class="item last">
                 <td>
-                    commission
+                    SalesPerson commission
                 </td>
 
                 <td>
-                    -$10.00
+                    -$${salesComm}
+                </td>
+            </tr>
+
+            <tr class="item last">
+                <td>
+                    Gallery commission
+                </td>
+
+                <td>
+                    -$${OwnerComm}
                 </td>
             </tr>
             
@@ -204,7 +214,7 @@
                 <td></td>
                 
                 <td>
-                   Total: $340.00
+                   Total: $${total}
                 </td>
             </tr>
         </table>

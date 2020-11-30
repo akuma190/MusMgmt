@@ -18,4 +18,6 @@ public class eventArtwork {
     int artworkid;
     @Column(name="salesperson")
     int salesperson;
+    @Column(name="status")
+    String status;
 }

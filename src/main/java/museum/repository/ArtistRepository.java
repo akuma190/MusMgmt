@@ -12,4 +12,9 @@ public interface ArtistRepository extends CrudRepository<artist,Integer> {
 
     @Query(value="select * from artist where artist_name =:artName",nativeQuery=true)
     artist findOne(@Param("artName") String artName);
+
+    @Query(value="select * from artist where artist_id =:artId",nativeQuery=true)
+    artist findOneById(@Param("artId") Integer artId);
+
+
 }

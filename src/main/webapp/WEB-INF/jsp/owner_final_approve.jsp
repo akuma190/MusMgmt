@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Product Page - Ustora Demo</title>
+    <title>Museum Management</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
@@ -40,19 +40,23 @@
 
 <body>
 
-    <div class="site-branding-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="logo">
-                        <h1><a href="./"><img src="../img/logo.png"></a></h1>
-                    </div>
+<div class="site-branding-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="logo">
+                    <h1><a href="./"><img src="img/logo.png"></a></h1>
                 </div>
+            </div>
 
-
+            <div class="col-sm-6">
+                <div class="shopping-item">
+                    <a href="cart.html">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
+                </div>
             </div>
         </div>
-    </div> <!-- End site branding area -->
+    </div>
+</div> <!-- End site branding area -->
 
     <div class="mainmenu-area" style="background:black">
         <div class="container">
@@ -73,6 +77,7 @@
                         <li><a href="ownerCreateEvent">Create Event</a></li>
                         <li><a href="ownerCheckReport">Check Report</a></li>
                         <li><a href="ownerManagePaintings">Manage Paintings</a></li>
+                        <li><a href="ownerManageEvents">Manage Events</a></li>
                     </ul>
                 </div>
             </div>
@@ -212,26 +217,26 @@
     </div>
 
 
-    <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- <div class="copyright"> -->
-                    <!-- <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p> -->
-                    <!-- </div> -->
-                </div>
+<%--    <div class="footer-bottom-area">--%>
+<%--        <div class="container">--%>
+<%--            <div class="row">--%>
+<%--                <div class="col-md-8">--%>
+<%--                    <!-- <div class="copyright"> -->--%>
+<%--                    <!-- <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p> -->--%>
+<%--                    <!-- </div> -->--%>
+<%--                </div>--%>
 
-                <!-- <div class="col-md-4"> -->
-                <!-- <div class="footer-card-icon"> -->
-                <!-- <i class="fa fa-cc-discover"></i> -->
-                <!-- <i class="fa fa-cc-mastercard"></i> -->
-                <!-- <i class="fa fa-cc-paypal"></i> -->
-                <!-- <i class="fa fa-cc-visa"></i> -->
-                <!-- </div> -->
-                <!-- </div> -->
-            </div>
-        </div>
-    </div> <!-- End footer bottom area -->
+<%--                <!-- <div class="col-md-4"> -->--%>
+<%--                <!-- <div class="footer-card-icon"> -->--%>
+<%--                <!-- <i class="fa fa-cc-discover"></i> -->--%>
+<%--                <!-- <i class="fa fa-cc-mastercard"></i> -->--%>
+<%--                <!-- <i class="fa fa-cc-paypal"></i> -->--%>
+<%--                <!-- <i class="fa fa-cc-visa"></i> -->--%>
+<%--                <!-- </div> -->--%>
+<%--                <!-- </div> -->--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div> <!-- End footer bottom area -->--%>
 
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
