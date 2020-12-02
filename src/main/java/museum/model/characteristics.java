@@ -16,9 +16,9 @@ public class characteristics {
     @Column(name="artwork_id")
     Integer artworkid;
     @Column(name="type")
-    Integer type;
+    String type;
     @Column(name="style")
-    Integer style;
+    String style;
     @Column(name="length")
     Integer length;
     @Column(name="width")

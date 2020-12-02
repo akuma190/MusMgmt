@@ -48,6 +48,9 @@ public class ArtistController {
     @Autowired
     EventArtWorkRepository eventArtWorkRepository;
 
+    @Autowired
+    CharacteristicsRepository characteristicsRepository;
+
     //to generate the links of all the artist pages pages.
     @RequestMapping("/artistIndex")
     public String artistIndex(@SessionAttribute("session") Session session,ModelMap model){
@@ -127,22 +130,42 @@ public class ArtistController {
 
     //Controllers for the working of the artist pages.
     @RequestMapping("/addArtistPaintings")
-    public String addArtistPaintings(artwork art, @SessionAttribute("session") Session session,ModelMap model){
+    public String addArtistPaintings(artwork art, @SessionAttribute("session") Session session,ModelMap model,characteristics charect){
         model.put("session",session);
         art.setArtist_type(session.getType());
-        art.setStatus("waiting_for_approval");
+        //below is th code to change the staus if the  painter has sold more than 10 painitngs.
+//        art.setStatus("waiting_for_approval");
         System.out.println(session.getUsername());
         System.out.println(session.getType());
         if(session.getType().equals("collector")){
             collector artVar=collectorRepository.findOne(session.getUsername());
             art.setArtcolid(artVar.getCollector_id());
+            if(artworkRepository.findCountForApproval(artVar.getCollector_id())>10){
+                art.setStatus("in_museum");
+            }else{
+                art.setStatus("waiting_for_approval");
+            }
         }else if(session.getType().equals("artist")){
             artist artVar=artistRepo.findOne(session.getUsername());
             art.setArtcolid(artVar.getArtist_id());
+            if(artworkRepository.findCountForApproval(artVar.getArtist_id())>=10){
+                art.setStatus("in_museum");
+            }else{
+                art.setStatus("waiting_for_approval");
+            }
         }
         System.out.println(art);
-        artworkRepository.save(art);
 
+//        artworkRepository.save(art);
+        int max=0;
+        for(artwork artVar:artworkRepository.findAll()){
+            if(artVar.getArtworkid()>max){
+                max=artVar.getArtworkid();
+            }
+        }
+        charect.setArtworkid(max);
+        System.out.println(charect);
+//        characteristicsRepository.save(charect);
         return "redirect:artistAddPaintings";
     }
 

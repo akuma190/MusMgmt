@@ -1,5 +1,6 @@
 package museum.repository;
 
+import museum.model.artwork;
 import museum.model.collector;
 import museum.model.employee;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,8 @@ public interface EmployeeRepository extends CrudRepository<employee,Integer> {
 
     @Query(value="select * from employee where role='salesperson'",nativeQuery=true)
     List<employee> findAllXcpt();
+
+
+    @Query(value="select * from employee where role='salesperson' and staff_name=:salesName",nativeQuery=true)
+    employee findBySalesName(@Param("salesName") String salesName);
 }

@@ -157,8 +157,20 @@
 
                                             <p id="paint_length_field" class="form-row form-row-wide">
                                                 <label class="" for="idLength">Painting Length</label>
-                                                <input type="text" value="" placeholder="" id="idLength"
+                                                <input type="number" value="" placeholder="" id="idLength"
                                                        name="length" style="width: 1170px;">
+                                            </p>
+
+                                            <p id="paint_width_field" class="form-row form-row-wide">
+                                                <label class="" for="idWidth">Painting Length</label>
+                                                <input type="number" value="" placeholder="" id="idWidth"
+                                                       name="width" style="width: 1170px;">
+                                            </p>
+
+                                            <p id="paint_height_field" class="form-row form-row-wide">
+                                                <label class="" for="idHeight">Painting Length</label>
+                                                <input type="number" value="" placeholder="" id="idHeight"
+                                                       name="height" style="width: 1170px;">
                                             </p>
 
 

@@ -51,7 +51,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
+                        <a href="/">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
                     </div>
                 </div>
             </div>
@@ -94,78 +94,28 @@
                         <thead>
                             <tr>
                                 <th class="product-total">Painting Name</th>
-                                <th class="product-total">Artist or Collector Name</th>
+                                <th class="product-total">Artist Name</th>
+                                <th class="product-total">Event Name</th>
                                 <th class="product-total">Creation Date</th>
                                 <th class="product-total">Sold Date</th>
-                                <th class="product-total">Painting Type</th>
-                                <th class="product-total">Painting Style</th>
-                                <th class="product-total">medium</th>
-                                <th class="product-total">Type</th>
                                 <th class="product-total">Quoted Price</th>
                                 <th class="product-total">Sold Price</th>
+                                <th class="product-total">Customer Name</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${repo}" var="repo">
                             <tr>
-                                <td>Painting_1</td>
-                                <td>Ashish Mishra</td>
-                                <td>11/17/2020</td>
-                                <td>11/17/2020</td>
-                                <td>Painting</td>
-                                <td>Contemprory</td>
-                                <td>Mixed</td>
-                                <td>Artist</td>
-                                <td>$700</td>
-                                <td>$700</td>
+                                <td><c:out value="${repo.artworkid}" /></td>
+                                <td><c:out value="${repo.artcolid}" /></td>
+                                <td><c:out value="${repo.eventid}" /></td>
+                                <td><c:out value="${repo.creationdate}" /></td>
+                                <td><c:out value="${repo.solddate}" /></td>
+                                <td><c:out value="${repo.soldamount}" /></td>
+                                <td><c:out value="${repo.soldamount}" /></td>
+                                <td><c:out value="${repo.customerid}" /></td>
                             </tr>
-                            <tr>
-                                <td>Painting_1</td>
-                                <td>Ashish Mishra</td>
-                                <td>11/17/2020</td>
-                                <td>11/17/2020</td>
-                                <td>Painting</td>
-                                <td>Contemprory</td>
-                                <td>Mixed</td>
-                                <td>Artist</td>
-                                <td>$700</td>
-                                <td>$700</td>
-                            </tr>
-                            <tr>
-                                <td>Painting_1</td>
-                                <td>Ashish Mishra</td>
-                                <td>11/17/2020</td>
-                                <td>11/17/2020</td>
-                                <td>Painting</td>
-                                <td>Contemprory</td>
-                                <td>Mixed</td>
-                                <td>Artist</td>
-                                <td>$700</td>
-                                <td>$700</td>
-                            </tr>
-                            <tr>
-                                <td>Painting_1</td>
-                                <td>Ashish Mishra</td>
-                                <td>11/17/2020</td>
-                                <td>11/17/2020</td>
-                                <td>Painting</td>
-                                <td>Contemprory</td>
-                                <td>Mixed</td>
-                                <td>Artist</td>
-                                <td>$700</td>
-                                <td>$700</td>
-                            </tr>
-                            <tr>
-                                <td>Painting_1</td>
-                                <td>Ashish Mishra</td>
-                                <td>11/17/2020</td>
-                                <td>11/17/2020</td>
-                                <td>Painting</td>
-                                <td>Contemprory</td>
-                                <td>Mixed</td>
-                                <td>Artist</td>
-                                <td>$700</td>
-                                <td>$700</td>
-                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                     <input type="button" id="btnExport" value="Export" onclick="Export()" />

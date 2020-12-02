@@ -33,4 +33,15 @@ public interface ArtworkRepository extends CrudRepository<artwork,Integer> {
     @Query(value="select * from artwork where  curdate()-creation_date>=180",nativeQuery=true)
     List<artwork> findForManageArt();
 
+    @Query(value="select count(*) as count \n" +
+            "from \n" +
+            "museumdbms.artwork \n" +
+            "where status='sold'\n" +
+            "group by Art_col_id \n" +
+            "having Art_col_id=:artId",nativeQuery=true)
+    Integer findCountForApproval(@Param("artId") int artId);
+
+    @Query(value="select * from artwork where salesperson=:salesId and status<>'sold'",nativeQuery=true)
+    List<artwork> findBySalesIdName(@Param("salesId") int salesId);
+
 }

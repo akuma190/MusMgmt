@@ -52,7 +52,7 @@ URL: https://www.freshdesignweb.com/ustora/
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.html">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
+                    <a href="/">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
                 </div>
             </div>
         </div>

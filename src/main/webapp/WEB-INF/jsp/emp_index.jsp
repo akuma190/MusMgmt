@@ -48,7 +48,7 @@ URL: https://www.freshdesignweb.com/ustora/
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.html">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
+                    <a href="/">Hi ${session.username} !! - <span class="cart-amunt">Logout</span> </a>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@ URL: https://www.freshdesignweb.com/ustora/
 <!-- </div> -->
 <!-- </div> -->
 <!-- </div> -->
-<!-- </div> <!-- End promo area --> -->
+<!-- </div>  End promo area -->
 
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
@@ -118,7 +118,7 @@ URL: https://www.freshdesignweb.com/ustora/
                 <div class="latest-product">
                     <h2 class="section-title">Paintings Assigned To You</h2>
                     <div class="product-carousel">
-                        <c:forEach items="${artWo}" var="artWo">
+                        <c:forEach items="${listArt}" var="listArt">
                             <div class="single-product">
                                 <div class="product-f-image">
                                     <img src="img/product-1.jpg" alt="">
@@ -128,10 +128,10 @@ URL: https://www.freshdesignweb.com/ustora/
                                     </div>
                                 </div>
 
-                                <h2>Painting 1</h2>
+                                <h2>${listArt.artworkname}</h2>
 
                                 <div class="product-carousel-price">
-                                    <ins>MRP : $700.00</ins> <ins>SOLD : $700.00</ins>
+                                    <ins>MRP : ${listArt.price}</ins>
                                 </div>
                             </div>
                         </c:forEach>
