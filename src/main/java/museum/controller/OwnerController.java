@@ -49,6 +49,9 @@ public class OwnerController {
     @Autowired
     EventArtWorkRepository eventArtWorkRepository;
 
+    @Autowired
+    CustomerRepository customerRepository;
+
 
     //to generate the links of all the artist pages pages.
     @RequestMapping("/ownerIndex")
@@ -117,6 +120,54 @@ public class OwnerController {
         List<artwork> artWo=artworkRepository.findForManageArt();
         map.put("artWo",artWo);
         return "owner_manage_paintings";
+    }
+
+    @RequestMapping("/ownerManageArtwork")
+    public String ownerManageArtwork(@SessionAttribute("session") Session session,ModelMap map){
+        map.put("session",session);
+
+        return "owner_manage_artwork";
+    }
+
+    @RequestMapping("/ownerManageArtists")
+    public String ownerManageArtists(@SessionAttribute("session") Session session,ModelMap map){
+        map.put("session",session);
+        List<artist> artistList= (List<artist>) artistRepo.findAll();
+        HashMap<users,artist> hash=new HashMap<users,artist>();
+        for(artist srt:artistList){
+            users user=usersRepo.findOne(srt.getArtist_name());
+            hash.put(user,srt);
+        }
+        map.put("hash",hash);
+        return "owner_manage_artist";
+    }
+
+    @RequestMapping("/ownerManageCollectors")
+    public String ownerManageCollectors(@SessionAttribute("session") Session session,ModelMap map){
+        map.put("session",session);
+        List<collector> artistList= (List<collector>) collectorRepository.findAll();
+        HashMap<users,collector> hash=new HashMap<users,collector>();
+        for(collector srt:artistList){
+            users user=usersRepo.findOne(srt.getCollector_name());
+            hash.put(user,srt);
+        }
+        map.put("hash",hash);
+
+        return "owner_manage_collector";
+    }
+
+    @RequestMapping("/ownerManageCustomers")
+    public String ownerManageCustomers(@SessionAttribute("session") Session session,ModelMap map){
+        map.put("session",session);
+        List<customer> artistList= (List<customer>) customerRepository.findAll();
+        HashMap<users,customer> hash=new HashMap<users,customer>();
+        for(customer srt:artistList){
+            users user=usersRepo.findOne(srt.getCustomername());
+            hash.put(user,srt);
+        }
+        map.put("hash",hash);
+
+        return "owner_manage_customer";
     }
 
     @RequestMapping("/ownerManageEvents")
@@ -202,6 +253,22 @@ public class OwnerController {
 
     @RequestMapping("/deleteArtwork")
     public String deleteArtwork(@RequestParam int artId,ModelMap model,@SessionAttribute("session") Session session){
+        model.put("session",session);
+        System.out.println(artId);
+        artwork art=artworkRepository.findOne(artId);
+        artworkRepository.delete(art);
+        return "redirect:ownerPaintingsApprove";
+    }
+
+    @RequestMapping("/ownerEditEmployee/{username}")
+    public String ownerEditEmployee(@PathVariable String username,ModelMap model,@SessionAttribute("session") Session session){
+        model.put("session",session);
+
+        return "redirect:ownerPaintingsApprove";
+    }
+
+    @RequestMapping("/ownerDeleteEmployee/{username}")
+    public String ownerDeleteEmployee(@PathVariable String username,ModelMap model,@SessionAttribute("session") Session session){
         model.put("session",session);
         System.out.println(artId);
         artwork art=artworkRepository.findOne(artId);

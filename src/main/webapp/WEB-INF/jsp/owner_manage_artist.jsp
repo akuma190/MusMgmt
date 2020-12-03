@@ -90,6 +90,7 @@ URL: https://www.freshdesignweb.com/ustora/
 
 
 
+
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
@@ -98,39 +99,31 @@ URL: https://www.freshdesignweb.com/ustora/
                 <table class="shop_table" id="tblCustomers">
                     <thead>
                     <tr>
-                        <th class="product-name">Id</th>
-                        <th class="product-total">Painting Name</th>
-                        <th class="product-total">Artist or Collector Name</th>
+                        <th class="product-total">User Id</th>
+                        <th class="product-total">User Name</th>
+                        <th class="product-total">First Name</th>
+                        <th class="product-total">Last Name</th>
                         <th class="product-total">Creation Date</th>
-                        <th class="product-total">Painting Type</th>
-                        <th class="product-total">Painting Style</th>
-                        <th class="product-total">medium</th>
-                        <th class="product-total">Type</th>
-                        <th class="product-total">Quoted Price</th>
                         <th class="product-total" style="width: 35%;">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${repo}" var="repo">
+                    <c:forEach items="${hash}" var="hash">
                         <tr>
-                            <td><c:out value="${repo.artworkid}" /></td>
-                            <td><c:out value="${repo.artworkname}" /></td>
-                            <td><c:out value="${repo.artcolid}" /></td>
-                            <td><c:out value="${repo.creationdate}" /></td>
-                            <td><c:out value="${repo.artist_type}" /></td>
-                            <td><c:out value="${repo.artist_type}" /></td>
-                            <td><c:out value="${repo.artist_type}" /></td>
-                            <td><c:out value="${repo.artist_type}" /></td>
-                            <td><c:out value="${repo.price}" /></td>
+                            <td><c:out value="${hash.value.artist_id}" /></td>
+                            <td><c:out value="${hash.key.username}" /></td>
+                            <td><c:out value="${hash.key.firstname}" /></td>
+                            <td><c:out value="${hash.key.lastname}" /></td>
+                            <td><c:out value="${hash.value.creation_date}" /></td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <a href="ownerfinalApprove/${repo.artworkid}" type="button" style="width:100px;height:45px;"class="btn btn-primary" >Approve</a>
+                                        <a href="ownerEditEmployee/${hash.key.username}" type="button" style="width:100px;height:45px;"class="btn btn-primary" >Edit</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <form action="deleteArtwork" method="post">
-                                            <input type="hidden" id="artId" name="artId" value="${repo.artworkid}">
-                                            <button type="submit" class="btn btn-danger">Reject</button>
+                                        <form action="ownerDeleteEmployee/${hash.key.username}" method="post">
+                                            <input type="hidden" id="artId" name="artId" value="">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>
                                 </div>

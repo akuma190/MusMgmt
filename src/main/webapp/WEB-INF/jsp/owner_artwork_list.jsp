@@ -72,9 +72,13 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="ownerArtworkList">Artwork List</a></li>
                     <li><a href="ownerPaintingsApprove">New Entries</a></li>
                     <li><a href="ownerCreateEvent">Create Event</a></li>
-                    <li><a href="ownerCheckReport">Check Report</a></li>
+                    <li><a href="ownerCheckReport">Report</a></li>
                     <li><a href="ownerManagePaintings">Manage Paintings</a></li>
                     <li><a href="ownerManageEvents">Manage Events</a></li>
+                    <li><a href="ownerManageArtwork">Manage Artwork</a></li>
+                    <li><a href="ownerManageArtists">Manage Artists</a></li>
+                    <li><a href="ownerManageCollectors">Manage Collectors</a></li>
+                    <li><a href="ownerManageCustomers">Manage Customers</a></li>
                 </ul>
             </div>
         </div>

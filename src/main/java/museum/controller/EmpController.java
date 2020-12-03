@@ -76,8 +76,14 @@ public class EmpController {
         System.out.println(empl);
         List<report> repo=reportRepository.findAllBySalesper(empl.getStaffid());
         System.out.println(repo);
-        HashMap<report,Integer> hash=new HashMap<report,Integer>();
-
+        HashMap<report,Double> hash=new HashMap<report,Double>();
+        Double total=0.0;
+        for(report rpt:repo){
+            hash.put(rpt,(rpt.getSoldamount()*.05));
+            total=total+(rpt.getSoldamount()*.05);
+        }
+        model.put("hash",hash);
+        model.put("total",total);
         return "emp_pay_stub";
     }
 }

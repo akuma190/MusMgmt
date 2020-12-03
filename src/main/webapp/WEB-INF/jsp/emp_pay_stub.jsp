@@ -103,16 +103,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${hash}" var="hash">
                             <tr>
-                                <td>Painting_1</td>
-                                <td>Ashish Mishra</td>
-                                <td>11/17/2020</td>
-                                <td>11/17/2020</td>
-                                <td>Painting</td>
-                                <td>Contemprory</td>
-                                <td>Earning</td>
+                                <td><c:out value="${hash.key.artworkid}" /></td>
+                                <td><c:out value="${hash.key.artcolid}" /></td>
+                                <td><c:out value="${hash.key.creationdate}" /></td>
+                                <td><c:out value="${hash.key.solddate}" /></td>
+                                <td><c:out value="${hash.key.soldamount}" /></td>
+                                <td><c:out value="${hash.key.soldamount}" /></td>
+                                <td><c:out value="${hash.value}" /></td>
                             </tr>
-
+                        </c:forEach>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total Earning</td>
+                            <td>${total}</td>
+                        </tr>
                         </tbody>
                     </table>
                     <input type="button" id="btnExport" value="Export" onclick="Export()" />
