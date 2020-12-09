@@ -75,6 +75,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="../customerEvents">Visit Events</a></li>
                     <li><a href="../customerGalleryPaintings">Visit Gallery</a></li>
                     <li><a href="../customerReceiptPage">Receipts</a></li>
+                    <li><a href="../customerManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>

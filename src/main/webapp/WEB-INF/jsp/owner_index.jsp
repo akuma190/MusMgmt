@@ -132,7 +132,7 @@ URL: https://www.freshdesignweb.com/ustora/
                                     <img src="img/product-1.jpg" alt="">
                                     <div class="product-hover">
                                         <!-- <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="ownerPaintingDetails/${hash.value.artwoorkid}" class="view-details-link" target="_blank"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 

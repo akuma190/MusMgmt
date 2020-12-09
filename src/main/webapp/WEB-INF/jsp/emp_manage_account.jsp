@@ -6,6 +6,7 @@ Twitter: https://twitter.com/freshdesignweb
 URL: https://www.freshdesignweb.com/ustora/
 -->
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +14,21 @@ URL: https://www.freshdesignweb.com/ustora/
     <title>Museum Management</title>
 
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
+          type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,14 +37,16 @@ URL: https://www.freshdesignweb.com/ustora/
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body >
+
+<body>
+
 
 <div class="site-branding-area">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="img/logo.png"></a></h1>
+                    <h1><a href="./"><img src="../img/logo.png"></a></h1>
                 </div>
             </div>
 
@@ -79,72 +83,87 @@ URL: https://www.freshdesignweb.com/ustora/
 </div> <!-- End mainmenu area -->
 
 
-<!-- <div class="promo-area"> -->
-<!-- <div class="zigzag-bottom"></div> -->
-<!-- <div class="container"> -->
-<!-- <div class="row"> -->
-<!-- <div class="col-md-3 col-sm-6"> -->
-<!-- <div class="single-promo promo1"> -->
-<!-- <i class="fa fa-refresh"></i> -->
-<!-- <p>30 Days return</p> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- <div class="col-md-3 col-sm-6"> -->
-<!-- <div class="single-promo promo2"> -->
-<!-- <i class="fa fa-truck"></i> -->
-<!-- <p>Free shipping</p> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- <div class="col-md-3 col-sm-6"> -->
-<!-- <div class="single-promo promo3"> -->
-<!-- <i class="fa fa-lock"></i> -->
-<!-- <p>Secure payments</p> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- <div class="col-md-3 col-sm-6"> -->
-<!-- <div class="single-promo promo4"> -->
-<!-- <i class="fa fa-gift"></i> -->
-<!-- <p>New products</p> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- </div> -->
-<!-- </div>  End promo area -->
 
-<div class="maincontent-area">
+
+<div class="single-product-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
+
+
             <div class="col-md-12">
-                <div class="latest-product">
-                    <h2 class="section-title">Paintings Assigned To You</h2>
-                    <div class="product-carousel">
-                        <c:forEach items="${listArt}" var="listArt">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-1.jpg" alt="">
-                                    <div class="product-hover">
-                                        <!-- <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                <div class="product-content-right">
+                    <div class="woocommerce">
+
+                        <div class="woocommerce-info">Update the details
+                        </div>
+
+
+
+                        <form enctype="multipart/form-data" action="changeAccount" class="checkout" method="post"
+                              name="checkout" >
+
+                            <div id="customer_details" class="col2-set">
+                                <div class="col-6">
+                                    <div class="woocommerce-billing-fields">
+                                        <p id="billing_User_Name"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idUsername">User Name
+                                            </label>
+                                            <input type="text" value="${user.username}" placeholder="" id="idUs"
+                                                   name="" class="input-text " disabled>
+                                            <input type="hidden" value="${user.username}" placeholder="" id="idUsername"
+                                                   name="username" class="input-text " >
+                                        </p>
+
+                                        <p id="billing_First_Name"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idFirstname">First Name
+                                            </label>
+                                            <input type="text" value="${user.firstname}" placeholder="" id="idFirstname"
+                                                   name="firstname" class="input-text ">
+
+                                        </p>
+
+                                        <p id="billing_Last_Name"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idLastname">Last Name
+                                            </label>
+                                            <input type="text" value="${user.lastname}" placeholder="" id="idLastname"
+                                                   name="lastname" class="input-text ">
+                                        </p>
+
+                                        <p id="billing_password"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idPassword">Password
+                                            </label>
+                                            <input type="password" value="${user.password}" placeholder="" id="idPassword"
+                                                   name="password" class="input-text ">
+                                        </p>
+
+                                        <div class="clear"></div>
+
+
+
+
+                                        <div class="form-row place-order">
+
+                                            <input type="submit" data-value="Create Event" value="Create Event" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+
+                                        </div>
+
                                     </div>
                                 </div>
 
-                                <h2>${listArt.artworkname}</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>MRP : ${listArt.price}</ins>
-                                </div>
                             </div>
-                        </c:forEach>
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div> <!-- End main content area -->
-
-
-
+</div>
 
 
 
@@ -184,9 +203,18 @@ URL: https://www.freshdesignweb.com/ustora/
 
 <!-- Main Script -->
 <script src="js/main.js"></script>
-
-<!-- Slider -->
-<script type="text/javascript" src="js/bxslider.min.js"></script>
-<script type="text/javascript" src="js/script.slider.js"></script>
+<script>
+    function changetextbox()
+    {
+        if (document.getElementById("idEventtype").value === "single") {
+            document.getElementById("myDiv").style.display="block";
+            // alert("hello");
+        }
+        else {
+            document.getElementById("myDiv").style.display="none";
+        }
+    }
+</script>
 </body>
+
 </html>

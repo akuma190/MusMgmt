@@ -75,6 +75,7 @@
                             <li><a href="empIndex">Home</a></li>
                             <li><a href="empPaintSold">Paintings Sold</a></li>
                             <li><a href="empPayStub">Pay Stub</a></li>
+                            <li><a href="empManageAccount">Manage Account</a></li>
                         </ul>
                     </ul>
                 </div>  
@@ -105,13 +106,23 @@
                         <tbody>
                         <c:forEach items="${hash}" var="hash">
                             <tr>
-                                <td><c:out value="${hash.key.artworkid}" /></td>
-                                <td><c:out value="${hash.key.artcolid}" /></td>
+                                <td><c:out value="${hashArt[hash.key.artworkid]}" /></td>
+                                <c:if test="${hashArtist[hash.key.artcolid] == null}">
+
+                                    <td><c:out value="${hashCol[hash.key.artcolid]}" /></td>
+
+                                </c:if>
+                                <c:if test="${hashCol[hash.key.artcolid] == null}">
+
+                                    <td><c:out value="${hashArtist[hash.key.artcolid]}" /></td>
+
+                                </c:if>
+
                                 <td><c:out value="${hash.key.creationdate}" /></td>
                                 <td><c:out value="${hash.key.solddate}" /></td>
-                                <td><c:out value="${hash.key.soldamount}" /></td>
-                                <td><c:out value="${hash.key.soldamount}" /></td>
-                                <td><c:out value="${hash.value}" /></td>
+                                <td><c:out value="$ ${hashArtPrice[hash.key.artworkid]}" /></td>
+                                <td><c:out value="$ ${hash.key.soldamount}" /></td>
+                                <td><c:out value="$ ${hash.value}" /></td>
                             </tr>
                         </c:forEach>
                         <tr>
@@ -130,7 +141,7 @@
                             <td></td>
                             <td></td>
                             <td>Total Earning</td>
-                            <td>${total}</td>
+                            <td>$ ${total}</td>
                         </tr>
                         </tbody>
                     </table>

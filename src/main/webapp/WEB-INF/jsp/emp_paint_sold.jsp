@@ -75,6 +75,7 @@
                             <li><a href="empIndex">Home</a></li>
                             <li><a href="empPaintSold">Paintings Sold</a></li>
                             <li><a href="empPayStub">Pay Stub</a></li>
+                            <li><a href="empManageAccount">Manage Account</a></li>
                         </ul>
                     </ul>
                 </div>  
@@ -106,14 +107,23 @@
                         <tbody>
                         <c:forEach items="${repo}" var="repo">
                             <tr>
-                                <td><c:out value="${repo.artworkid}" /></td>
-                                <td><c:out value="${repo.artcolid}" /></td>
-                                <td><c:out value="${repo.eventid}" /></td>
+                                <td><c:out value="${hashArt[repo.artworkid]}" /></td>
+                                <c:if test="${hashArtist[repo.artcolid] == null}">
+
+                                    <td><c:out value="${hashCol[repo.artcolid]}" /></td>
+
+                                </c:if>
+                                <c:if test="${hashCol[repo.artcolid] == null}">
+
+                                    <td><c:out value="${hashArtist[repo.artcolid]}" /></td>
+
+                                </c:if>
+                                <td><c:out value="${hashEvent[repo.eventid]}" /></td>
                                 <td><c:out value="${repo.creationdate}" /></td>
                                 <td><c:out value="${repo.solddate}" /></td>
+                                <td><c:out value="${hashArtPrice[repo.artworkid]}" /></td>
                                 <td><c:out value="${repo.soldamount}" /></td>
-                                <td><c:out value="${repo.soldamount}" /></td>
-                                <td><c:out value="${repo.customerid}" /></td>
+                                <td><c:out value="${hashCust[repo.customerid]}" /></td>
                             </tr>
                         </c:forEach>
                         </tbody>

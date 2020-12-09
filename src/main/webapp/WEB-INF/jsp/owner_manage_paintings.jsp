@@ -82,6 +82,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="ownerManageArtists">Manage Artists</a></li>
                     <li><a href="ownerManageCollectors">Manage Collectors</a></li>
                     <li><a href="ownerManageCustomers">Manage Customers</a></li>
+                    <li><a href="ownerManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>

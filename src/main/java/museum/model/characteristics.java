@@ -2,15 +2,13 @@ package museum.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
 public class characteristics {
 
-    @Id
+    @Id@GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="charect_id")
     Integer charectid;
     @Column(name="artwork_id")
@@ -25,4 +23,5 @@ public class characteristics {
     Integer width;
     @Column(name="height")
     Integer height;
+    String medium;
 }

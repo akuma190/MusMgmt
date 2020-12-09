@@ -20,15 +20,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./"><img src="../img/logo.png"></a></h1>
                     </div>
                 </div>
 
@@ -72,12 +72,18 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="artistIndex">Home</a></li>
-                        <li><a href="artistAddPaintings">Add Artwork</a></li>
-                        <li><a href="artistPaintApprove">Offers</a></li>
-                        <li><a href="artistPayStub">Pay Stub</a></li>
-                        <li><a href="artistCheckPage">Checks</a></li>
-                        <li><a href="artistManageAccount">Manage Account</a></li>
+                        <li><a href="../ownerIndex">Home</a></li>
+                        <li><a href="../ownerArtworkList">Artwork List</a></li>
+                        <li><a href="../ownerPaintingsApprove">New Entries</a></li>
+                        <li><a href="../ownerCreateEvent">Create Event</a></li>
+                        <li><a href="../ownerCheckReport">Report</a></li>
+                        <li><a href="../ownerManagePaintings">Manage Paintings</a></li>
+                        <li><a href="../ownerManageEvents">Manage Events</a></li>
+                        <li><a href="../ownerManageArtwork">Manage Artwork</a></li>
+                        <li><a href="../ownerManageArtists">Manage Artists</a></li>
+                        <li><a href="../ownerManageCollectors">Manage Collectors</a></li>
+                        <li><a href="../ownerManageCustomers">Manage Customers</a></li>
+                        <li><a href="../ownerManageAccount">Manage Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -114,18 +120,24 @@
                                 <div class="clear"></div>
                             </form>
 
-                            <form enctype="multipart/form-data" action="addArtistPaintings" class="checkout" method="post"
+                            <form enctype="multipart/form-data" action="../ownerFinalEditArtwork" class="checkout" method="post"
                                 name="checkout">
 
                                 <div id="customer_details" class="col2-set">
                                     <div class="col-6">
                                         <div class="woocommerce-billing-fields">
+                                            <input type="hidden" value="${artWo.artworkid}" placeholder="" id="idArtworId"
+                                                   name="artworkid" class="input-text ">
+
+                                            <input type="hidden" value="${charec.charectid}" placeholder="" id="idCharectId"
+                                                   name="charectid" class="input-text ">
+
 
                                             <p id="billing_first_name_field"
                                                 class="form-row form-row-first validate-required">
                                                 <label class="" for="idArtworkname">Artwork Name
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="idArtworkname"
+                                                <input type="text" value="${artWo.artworkname}" placeholder="" id="idArtworkname"
                                                     name="artworkname" class="input-text ">
                                             </p>
 
@@ -133,50 +145,50 @@
                                                 class="form-row form-row-last validate-required">
                                                 <label class="" for="idPrice">Intial Price
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="idPrice"
+                                                <input type="text" value="${artWo.price}" placeholder="" id="idPrice"
                                                     name="price" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
                                             <p id="billing_company_field" class="form-row form-row-wide">
                                                 <label class="" for="idCreationdate">Start Date</label>
-                                                <input type="date" value="" placeholder="" id="idCreationdate"
+                                                <input type="date" value="${artWo.creationdate}" placeholder="" id="idCreationdate"
                                                     name="creationdate" style="width: 1170px;">
                                             </p>
 
                                             <p id="paint_type_field" class="form-row form-row-wide">
                                                 <label class="" for="idType">Painting Type</label>
-                                                <input type="text" value="" placeholder="" id="idType"
+                                                <input type="text" value="${charec.type}" placeholder="" id="idType"
                                                        name="type" style="width: 1170px;">
                                             </p>
 
                                             <p id="paint_style_field" class="form-row form-row-wide">
                                                 <label class="" for="idStyle">Painting Style</label>
-                                                <input type="text" value="" placeholder="" id="idStyle"
+                                                <input type="text" value="${charec.style}" placeholder="" id="idStyle"
                                                        name="style" style="width: 1170px;">
                                             </p>
 
                                             <p id="paint_medium_field" class="form-row form-row-wide">
-                                                <label class="" for="idMedium">Painting Medium</label>
-                                                <input type="text" value="" placeholder="" id="idMedium"
+                                                <label class="" for="idMedium">Painting Style</label>
+                                                <input type="text" value="${charec.medium}" placeholder="" id="idMedium"
                                                        name="medium" style="width: 1170px;">
                                             </p>
 
                                             <p id="paint_length_field" class="form-row form-row-wide">
                                                 <label class="" for="idLength">Painting Length</label>
-                                                <input type="number" value="" placeholder="" id="idLength"
+                                                <input type="number" value="${charec.length}" placeholder="" id="idLength"
                                                        name="length" style="width: 1170px;">
                                             </p>
 
                                             <p id="paint_width_field" class="form-row form-row-wide">
-                                                <label class="" for="idWidth">Painting Width</label>
-                                                <input type="number" value="" placeholder="" id="idWidth"
+                                                <label class="" for="idWidth">Painting Length</label>
+                                                <input type="number" value="${charec.width}" placeholder="" id="idWidth"
                                                        name="width" style="width: 1170px;">
                                             </p>
 
                                             <p id="paint_height_field" class="form-row form-row-wide">
-                                                <label class="" for="idHeight">Painting Height</label>
-                                                <input type="number" value="" placeholder="" id="idHeight"
+                                                <label class="" for="idHeight">Painting Length</label>
+                                                <input type="number" value="${charec.height}" placeholder="" id="idHeight"
                                                        name="height" style="width: 1170px;">
                                             </p>
 

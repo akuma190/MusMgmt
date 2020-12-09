@@ -60,9 +60,9 @@ public class CustController {
     @RequestMapping("/customerIndex")
     public String customerIndex(ModelMap model, @SessionAttribute("session") Session session){
         model.put("session",session);
-        customer cust=customerRepository.findOne(session.getUsername());
-        System.out.println(cust);
-        List<report> repo=reportRepository.findAllByCustomer(cust.getCustomerid());
+//        customer cust=customerRepository.findOne(session.getUsername());
+//        System.out.println(cust);
+        List<report> repo=reportRepository.findAllByCustomer(session.getUsername());
         HashMap<report,artwork> hash=new HashMap<report,artwork>();
         for(report re:repo){
             System.out.println(re);
@@ -108,9 +108,9 @@ public class CustController {
     @RequestMapping("/customerReceiptPage")
     public String customerReceiptPage(ModelMap model, @SessionAttribute("session") Session session){
         model.put("session",session);
-        customer cust=customerRepository.findOne(session.getUsername());
-        System.out.println(cust);
-        List<report> repo=reportRepository.findAllByCustomer(cust.getCustomerid());
+//        customer cust=customerRepository.findOne(session.getUsername());
+//        System.out.println(cust);
+        List<report> repo=reportRepository.findAllByCustomer(session.getUsername());
         HashMap<report,artwork> hash=new HashMap<report,artwork>();
         for(report re:repo){
             System.out.println(re);
@@ -165,7 +165,7 @@ public class CustController {
 
         if(eventArtWorkRepository.findByArt(artId)!=null){
             quote.setEventid(eveArt.getEventid());
-            quote.setUsername(1);
+            quote.setUsername(session.getUsername());
             quote.setArtworkid(eveArt.getArtworkid());
             quote.setQuotedprice(price);
 
@@ -192,7 +192,7 @@ public class CustController {
 
         }else{
             quote.setEventid(-1);
-            quote.setUsername(1);
+            quote.setUsername(session.getUsername());
             quote.setArtworkid(art.getArtworkid());
             quote.setQuotedprice(price);
 
@@ -219,5 +219,21 @@ public class CustController {
 
         //if()
         return "redirect:customerEvents";
+    }
+
+    @RequestMapping("/customerManageAccount")
+    public String customerManageAccount(ModelMap model, @SessionAttribute("session") Session session){
+        model.put("session",session);
+        users user=usersRepo.findOne(session.getUsername());
+        model.put("user",user);
+        return "customer_manage_account";
+    }
+
+    @RequestMapping("/customerChangeAccount")
+    public String artistChangeAccount(ModelMap model,@SessionAttribute("session") Session session,users user){
+        model.put("session",session);
+        System.out.println(user);
+        usersRepo.save(user);
+        return "redirect:customerManageAccount";
     }
 }

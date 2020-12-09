@@ -20,15 +20,15 @@ URL: https://www.freshdesignweb.com/ustora/
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +46,7 @@ URL: https://www.freshdesignweb.com/ustora/
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="img/logo.png"></a></h1>
+                    <h1><a href="./"><img src="../img/logo.png"></a></h1>
                 </div>
             </div>
 
@@ -72,18 +72,18 @@ URL: https://www.freshdesignweb.com/ustora/
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="ownerIndex">Home</a></li>
-                    <li><a href="ownerArtworkList">Artwork List</a></li>
-                    <li><a href="ownerPaintingsApprove">New Entries</a></li>
-                    <li><a href="ownerCreateEvent">Create Event</a></li>
-                    <li><a href="ownerCheckReport">Report</a></li>
-                    <li><a href="ownerManagePaintings">Manage Paintings</a></li>
-                    <li><a href="ownerManageEvents">Manage Events</a></li>
-                    <li><a href="ownerManageArtwork">Manage Artwork</a></li>
-                    <li><a href="ownerManageArtists">Manage Artists</a></li>
-                    <li><a href="ownerManageCollectors">Manage Collectors</a></li>
-                    <li><a href="ownerManageCustomers">Manage Customers</a></li>
-                    <li><a href="ownerManageAccount">Manage Account</a></li>
+                    <li><a href="../ownerIndex">Home</a></li>
+                    <li><a href="../ownerArtworkList">Artwork List</a></li>
+                    <li><a href="../ownerPaintingsApprove">New Entries</a></li>
+                    <li><a href="../ownerCreateEvent">Create Event</a></li>
+                    <li><a href="../ownerCheckReport">Report</a></li>
+                    <li><a href="../ownerManagePaintings">Manage Paintings</a></li>
+                    <li><a href="../ownerManageEvents">Manage Events</a></li>
+                    <li><a href="../ownerManageArtwork">Manage Artwork</a></li>
+                    <li><a href="../ownerManageArtists">Manage Artists</a></li>
+                    <li><a href="../ownerManageCollectors">Manage Collectors</a></li>
+                    <li><a href="../ownerManageCustomers">Manage Customers</a></li>
+                    <li><a href="../ownerManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>
@@ -103,62 +103,60 @@ URL: https://www.freshdesignweb.com/ustora/
                 <div class="product-content-right">
                     <div class="woocommerce">
 
-                        <div class="woocommerce-info">Below Are Your Event Details
+                        <div class="woocommerce-info">Update the details
                         </div>
 
 
 
-                        <form enctype="multipart/form-data" action="ownerAddPaintings" class="checkout" method="post"
-                              name="checkout">
+                        <form enctype="multipart/form-data" action="changeAccount" class="checkout" method="post"
+                              name="checkout" >
 
                             <div id="customer_details" class="col2-set">
                                 <div class="col-6">
                                     <div class="woocommerce-billing-fields">
-                                        <p id="billing_country_field"
-                                           class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                            <label class="" for="idEventtype">Event Type
-                                            </label>
-                                            <input type="text" value="${eve.eventtype}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.eventtype}" placeholder="" id="idEventtype"
-                                                   name="eventtype" class="input-text " >
-                                        </p>
-
-                                        <p id="billing_first_name_field"
+                                        <p id="billing_User_Name"
                                            class="form-row form-row-first validate-required">
-                                            <label class="" for="idEventname">Event Name
+                                            <label class="" for="idUsername">User Name
                                             </label>
-                                            <input type="text" value="${eve.eventname}" placeholder="" id=""
+                                            <input type="text" value="${user.username}" placeholder="" id="idUs"
                                                    name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.eventname}" placeholder="" id="idEventname"
-                                                   name="eventname" class="input-text " >
+                                            <input type="hidden" value="${user.username}" placeholder="" id="idUsername"
+                                                   name="username" class="input-text " >
                                         </p>
 
-                                        <p id="billing_artist_field"
-                                           class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated" >
-                                            <label class="" for="idArtistid">Event Type
+                                        <p id="billing_First_Name"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idFirstname">First Name
                                             </label>
-                                            <input type="text" value="${eve.artistid}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.artistid}" placeholder="" id="idArtistid"
-                                                   name="artistid" class="input-text " >
+                                            <input type="text" value="${user.firstname}" placeholder="" id="idFirstname"
+                                                   name="firstname" class="input-text ">
+
                                         </p>
 
+                                        <p id="billing_Last_Name"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idLastname">Last Name
+                                            </label>
+                                            <input type="text" value="${user.lastname}" placeholder="" id="idLastname"
+                                                   name="lastname" class="input-text ">
+                                        </p>
+
+                                        <p id="billing_password"
+                                           class="form-row form-row-first validate-required">
+                                            <label class="" for="idPassword">Password
+                                            </label>
+                                            <input type="password" value="${user.password}" placeholder="" id="idPassword"
+                                                   name="password" class="input-text ">
+                                        </p>
 
                                         <div class="clear"></div>
 
-                                        <p id="billing_company_field" class="form-row form-row-wide">
-                                            <label class="" for="idCreationdate">Start Date</label>
-                                            <input type="text" value="${eve.creationdate}" placeholder="" id=""
-                                                   name="" class="input-text " disabled>
-                                            <input type="hidden" value="${eve.creationdate}" placeholder="" id="idCreationdate"
-                                                   name="creationdate" class="input-text " >
-                                        </p>
+
 
 
                                         <div class="form-row place-order">
 
-                                            <input type="submit" data-value="Add Paintings" value="Add Paintings" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                            <input type="submit" data-value="Create Event" value="Create Event" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
 
                                         </div>
 

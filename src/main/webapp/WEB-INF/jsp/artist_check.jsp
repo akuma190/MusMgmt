@@ -112,8 +112,8 @@
                             </td>
                             
                             <td>
-                                Invoice id: 123<br>
-                                Created: January 1, 2015<br>
+                                Invoice id: ${repo.reportid*10}<br>
+                                Created: ${repo.solddate}<br>
                             </td>
                         </tr>
                     </table>
@@ -125,15 +125,15 @@
                     <table>
                         <tr>
                             <td>
-                                MuseumMgmt, Inc.<br>
+                                ${myCustomer.firstname} ${myCustomer.lastname}<br>
                                 80 Hoyt Street<br>
                                 Kearny 07032, NJ
                             </td>
                             
                             <td>
-                                Artist or Collector<br>
-                                Artist or collector name<br>
-                                name@museum.com
+                                ${user.firstname} ${user.lastname}<br>
+                                    Newark Public Museum,Newark,NJ 07102<br>
+                                    ${user.firstname}@gmail.com
                             </td>
                         </tr>
                     </table>
@@ -156,55 +156,65 @@
                 </td>
                 
                 <td>
-                    invoice no*10
+                    ${repo.reportid*10}
                 </td>
             </tr>
-            
+
             <tr class="heading">
                 <td>
                     Item
                 </td>
-                
+
                 <td>
                     Price
                 </td>
             </tr>
-            
+
             <tr class="item">
                 <td>
                     Painting Price
                 </td>
-                
+
                 <td>
-                    $300.00
+                    $${artWo.price}
                 </td>
             </tr>
-            
+
             <tr class="item">
                 <td>
                     Price paid
                 </td>
-                
+
                 <td>
-                    ${repo.soldamount}
+                    $${repo.soldamount}
                 </td>
             </tr>
 
             <tr class="item last">
                 <td>
-                    commission
+                    SalesPerson commission
                 </td>
 
                 <td>
-                    -$10.00
+                    -$${salesComm}
                 </td>
             </tr>
-            
+
+            <tr class="item last">
+                <td>
+                    Gallery commission
+                </td>
+
+                <td>
+                    -$${OwnerComm}
+                </td>
+            </tr>
+
             <tr class="total">
                 <td></td>
-                
+
                 <td>
-                   Total: $340.00
+                    Total: $${total}
                 </td>
             </tr>
         </table>

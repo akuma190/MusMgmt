@@ -16,5 +16,8 @@ public interface CustomerRepository extends CrudRepository<customer,Integer> {
     @Query(value="select * from customer where customer_name =:custName",nativeQuery=true)
     customer findOne(@Param("custName") String custName);
 
+    @Query(value="select * from customer where customer_id =:custId",nativeQuery=true)
+    customer findByCusId(@Param("custId") Integer custId);
+
 
 }

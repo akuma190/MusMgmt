@@ -82,6 +82,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="ownerManageArtists">Manage Artists</a></li>
                     <li><a href="ownerManageCollectors">Manage Collectors</a></li>
                     <li><a href="ownerManageCustomers">Manage Customers</a></li>
+                    <li><a href="ownerManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>
@@ -105,6 +106,7 @@ URL: https://www.freshdesignweb.com/ustora/
                         <th class="product-total">Creation Date</th>
                         <th class="product-total">Artist Type</th>
                         <th class="product-total">Quoted Price</th>
+                        <th class="product-total">Status</th>
                         <th class="product-total">SalesPerson</th>
                         <th class="product-total" style="width: 35%;">Action</th>
                     </tr>
@@ -118,16 +120,17 @@ URL: https://www.freshdesignweb.com/ustora/
                             <td><c:out value="${artWo.creationdate}" /></td>
                             <td><c:out value="${artWo.artist_type}" /></td>
                             <td><c:out value="${artWo.price}" /></td>
+                            <td><c:out value="${artWo.status}" /></td>
                             <td><c:out value="${artWo.salesperson}" /></td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <a href="ownerExtendPainting/${artWo.artworkid}" type="button" style="width:100px;height:45px;"class="btn btn-primary" >Extend</a>
+                                        <a href="ownerEditArtwork/${artWo.artworkid}" type="button" style="width:100px;height:45px;"class="btn btn-primary" >Edit</a>
                                     </div>
                                     <div class="col-md-6">
                                         <form action="deleteArtwork/${artWo.artworkid}" method="post">
                                             <input type="hidden" id="artId" name="artId" value="">
-                                            <button type="submit" class="btn btn-danger">Reject</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>
                                 </div>

@@ -12,5 +12,8 @@ public interface CollectorRepository extends CrudRepository<collector,Integer> {
 
     @Query(value="select * from collector where collector_name =:colName",nativeQuery=true)
     collector findOne(@Param("colName") String colName);
+
+    @Query(value="select * from collector where collector_id =:colId",nativeQuery=true)
+    collector findColById(@Param("colId") Integer colId);
 }
 

@@ -1,9 +1,6 @@
 package museum.controller;
 
-import museum.model.Session;
-import museum.model.artwork;
-import museum.model.employee;
-import museum.model.report;
+import museum.model.*;
 import museum.repository.*;
 import museum.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +42,12 @@ public class EmpController {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @Autowired
+    EventRepository eventRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
+
     @RequestMapping("/empIndex")
     public String empIndex(ModelMap model, @SessionAttribute("session") Session session){
         model.put("session",session);
@@ -64,6 +67,43 @@ public class EmpController {
         System.out.println(empl);
         List<report> repo=reportRepository.findAllBySalesper(empl.getStaffid());
         System.out.println(repo);
+        HashMap<Integer,String> hashArt=new HashMap<Integer,String>();
+        for(artwork ar:artworkRepository.findAll()){
+            //System.out.println(ar);
+            hashArt.put(ar.getArtworkid(),ar.getArtworkname());
+        }
+        HashMap<Integer,String> hashArtist=new HashMap<Integer,String>();
+        for(artist ar:artistRepo.findAll()){
+            //System.out.println(ar);
+            hashArtist.put(ar.getArtist_id(),ar.getArtist_name());
+        }
+        HashMap<Integer,String> hashCol=new HashMap<Integer,String>();
+        for(collector ar:collectorRepository.findAll()){
+            //System.out.println(ar);
+            hashArtist.put(ar.getCollector_id(),ar.getCollector_name());
+        }
+        HashMap<Integer,Integer> hashArtPrice=new HashMap<Integer,Integer>();
+        for(artwork ar:artworkRepository.findAll()){
+            //System.out.println(ar);
+            hashArtPrice.put(ar.getArtworkid(),ar.getPrice());
+        }
+        HashMap<Integer,String> hashEvent=new HashMap<Integer,String>();
+        for(event ar:eventRepository.findAll()){
+            //System.out.println(ar);
+            hashEvent.put(ar.getEventid(),ar.getEventname());
+        }
+        HashMap<Integer,String> hashCust=new HashMap<Integer,String>();
+        for(customer ar:customerRepository.findAll()){
+            //System.out.println(ar);
+            hashCust.put(ar.getCustomerid(),ar.getCustomername());
+        }
+
+        model.put("hashArt",hashArt);
+        model.put("hashArtist",hashArtist);
+        model.put("hashCol",hashCol);
+        model.put("hashArtPrice",hashArtPrice);
+        model.put("hashEvent",hashEvent);
+        model.put("hashCust",hashCust);
         model.put("repo",repo);
         return "emp_paint_sold";
     }
@@ -82,8 +122,49 @@ public class EmpController {
             hash.put(rpt,(rpt.getSoldamount()*.05));
             total=total+(rpt.getSoldamount()*.05);
         }
+        //System.out.println(artworkRepository.findAll());
+        HashMap<Integer,String> hashArt=new HashMap<Integer,String>();
+        for(artwork ar:artworkRepository.findAll()){
+            //System.out.println(ar);
+            hashArt.put(ar.getArtworkid(),ar.getArtworkname());
+        }
+        HashMap<Integer,String> hashArtist=new HashMap<Integer,String>();
+        for(artist ar:artistRepo.findAll()){
+            //System.out.println(ar);
+            hashArtist.put(ar.getArtist_id(),ar.getArtist_name());
+        }
+        HashMap<Integer,String> hashCol=new HashMap<Integer,String>();
+        for(collector ar:collectorRepository.findAll()){
+            //System.out.println(ar);
+            hashArtist.put(ar.getCollector_id(),ar.getCollector_name());
+        }
+        HashMap<Integer,Integer> hashArtPrice=new HashMap<Integer,Integer>();
+        for(artwork ar:artworkRepository.findAll()){
+            //System.out.println(ar);
+            hashArtPrice.put(ar.getArtworkid(),ar.getPrice());
+        }
+        model.put("hashArt",hashArt);
+        model.put("hashArtist",hashArtist);
+        model.put("hashCol",hashCol);
+        model.put("hashArtPrice",hashArtPrice);
         model.put("hash",hash);
         model.put("total",total);
         return "emp_pay_stub";
+    }
+
+    @RequestMapping("/empManageAccount")
+    public String empManageAccount(ModelMap model, @SessionAttribute("session") Session session){
+        model.put("session",session);
+        users user=usersRepo.findOne(session.getUsername());
+        model.put("user",user);
+        return "emp_manage_account";
+    }
+
+    @RequestMapping("/empChangeAccount")
+    public String artistChangeAccount(ModelMap model,@SessionAttribute("session") Session session,users user){
+        model.put("session",session);
+        System.out.println(user);
+        usersRepo.save(user);
+        return "redirect:empManageAccount";
     }
 }

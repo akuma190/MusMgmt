@@ -133,7 +133,7 @@
                             <td>
                                 ${artUser.firstname} ${artUser.lastname}<br>
                                 Newark Public Museum,Newark,NJ 07102<br>
-                                name@museum.com
+                                    ${artUser.firstname}@gmail.com
                             </td>
                         </tr>
                     </table>
@@ -190,31 +190,15 @@
                 </td>
             </tr>
 
-            <tr class="item last">
-                <td>
-                    SalesPerson commission
-                </td>
 
-                <td>
-                    -$${salesComm}
-                </td>
-            </tr>
 
-            <tr class="item last">
-                <td>
-                    Gallery commission
-                </td>
 
-                <td>
-                    -$${OwnerComm}
-                </td>
-            </tr>
             
             <tr class="total">
                 <td></td>
                 
                 <td>
-                   Total: $${total}
+                   Total: $${repo.soldamount}
                 </td>
             </tr>
         </table>

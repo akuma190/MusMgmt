@@ -17,7 +17,7 @@ public class report {
     @Column(name="artwork_id")
     int artworkid;
     @Column(name="customer_id")
-    int customerid;
+    String customerid;
     @Column(name="employee_id")
     int employeeid;
     @Column(name="sold_amount")

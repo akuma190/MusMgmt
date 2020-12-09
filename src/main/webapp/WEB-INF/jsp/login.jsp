@@ -36,13 +36,15 @@
                             </div>
                             <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
                         </form>
-                        <%--                <a href="#!" class="forgot-password-link">Forgot password?</a>--%>
-                        <c:if test="${status == 'not_exists'}">
+                        <c:if test="${status == 'wrong_password'}">
 
-                                This username is already being used, please enter a different username.
-                                <!--button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button-->
+                                <p style="color:red">You Have entered the wrong password</p>
+
+                        </c:if>
+                        <c:if test="${status == 'user_not_found'}">
+
+                            <p style="color:red">User Name Not Found</p>
+
                         </c:if>
                         <p class="login-card-footer-text">Don't have an account? <a href="register" class="text-reset">Register here</a></p>
                         <nav class="login-card-footer-nav">

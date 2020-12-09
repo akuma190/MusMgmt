@@ -15,7 +15,7 @@ public class quotation {
     @Column(name="event_id")
     int eventid;
     @Column(name="user_name")
-    int username;
+    String username;
     @Column(name="artwork_id")
     int artworkid;
     @Column(name="quoted_price")

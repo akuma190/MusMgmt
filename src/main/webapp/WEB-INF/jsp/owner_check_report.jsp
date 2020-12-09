@@ -82,6 +82,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="ownerManageArtists">Manage Artists</a></li>
                     <li><a href="ownerManageCollectors">Manage Collectors</a></li>
                     <li><a href="ownerManageCustomers">Manage Customers</a></li>
+                    <li><a href="ownerManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>
@@ -113,7 +114,7 @@ URL: https://www.freshdesignweb.com/ustora/
                         <tr>
                             <td><c:out value="${hash.value.artworkid}" /></td>
                             <td><c:out value="${hash.value.artworkname}" /></td>
-                            <td><c:out value="${hash.value.artcolid}" /></td>
+                            <td><c:out value="${hashName[hash.value.artcolid]}" /></td>
                             <td><c:out value="${hash.value.creationdate}" /></td>
                             <td><c:out value="${hash.key.solddate}" /></td>
                             <td><c:out value="${hash.value.price}" /></td>

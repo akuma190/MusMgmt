@@ -114,6 +114,10 @@ public class MainController {
     @RequestMapping("/checkLogin")
     public String checkLogin(users user, RedirectAttributes ra, @ModelAttribute Session session, ModelMap model){
         users val=usersRepo.findOne(user.getUsername());
+        if(val==null){
+            ra.addFlashAttribute("status","user_not_found");
+            return "redirect:/";
+        }
         if(val.getPassword().equals(user.getPassword())){
             authorities value=authoritiesRepository.findOne(user.getUsername());
             if(value.getAuthority().equals("owner")){
@@ -148,18 +152,25 @@ public class MainController {
             }
 
         }else{
-            return "login";
+            ra.addFlashAttribute("status","wrong_password");
+            return "redirect:/";
         }
         return "login";
     }
 
     @RequestMapping("/register")
     public String register(){
+
         return "register";
     }
 
     @RequestMapping("/newRegister")
-    public String register(@RequestParam String username,@RequestParam String password,@RequestParam String firstname,@RequestParam String lastname,@RequestParam String type){
+    public String register(RedirectAttributes ra,@RequestParam String username,@RequestParam String password,@RequestParam String firstname,@RequestParam String lastname,@RequestParam String type){
+        users testUser=new users();
+        if(usersRepo.findOne(username)!=null){
+            ra.addFlashAttribute("status","user_exixts");
+            return "redirect:/register";
+        }
         System.out.println(lastname);
         users user=new users();
         authorities auth=new authorities();

@@ -70,6 +70,7 @@
                     <li><a href="artistPaintApprove">Offers</a></li>
                     <li><a href="artistPayStub">Pay Stub</a></li>
                     <li><a href="artistCheckPage">Checks</a></li>
+                    <li><a href="artistManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>
@@ -83,21 +84,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="latest-product">
-                    <h2 class="section-title">Latest Products</h2>
+                    <h2 class="section-title">Total Cheks</h2>
                     <div class="product-carousel">
-                        <c:forEach items="${repo}" var="repo">
+                        <c:forEach items="${hash}" var="hash">
                             <div class="single-product">
                                 <div class="product-f-image">
                                     <img src="img/cheque.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="artistCheck/${repo.reportid}" class="view-details-link"><i class="fa fa-link"></i> See Cheque</a>
+                                        <a href="artistCheck/${hash.key.reportid}" class="view-details-link" target="_blank"><i class="fa fa-link"></i> See Cheque</a>
                                     </div>
                                 </div>
 
-                                <h2><a href="#">Painitng Name</a></h2>
+                                <h2><a href="#">Cheque For :${hash.value.artworkname}</a></h2>
 
                                 <div class="product-carousel-price">
-                                    <ins>Price : $700.00</ins> <ins>Sold : $700.00</ins>
+                                    <ins>PRICE : $ ${hash.value.price}</ins> <ins>BOUGHT : $ ${hash.key.soldamount}</ins>
                                 </div>
                             </div>
                         </c:forEach>

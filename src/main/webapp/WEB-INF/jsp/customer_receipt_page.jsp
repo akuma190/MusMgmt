@@ -73,6 +73,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="customerEvents">Visit Events</a></li>
                     <li><a href="customerGalleryPaintings">Visit Gallery</a></li>
                     <li><a href="customerReceiptPage">Receipts</a></li>
+                    <li><a href="customerManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>
@@ -97,7 +98,7 @@ URL: https://www.freshdesignweb.com/ustora/
                                     </div>
                                 </div>
 
-                                <h2><a href="single-product.html">RECEIPT FOR : ${hash.value.artworkname}</a></h2>
+                                <h2><a href="#">RECEIPT FOR : ${hash.value.artworkname}</a></h2>
 
                                 <div class="product-carousel-price">
                                     <ins>PRICE : $${hash.value.price}</ins> <ins>BOUGHT : $${hash.key.soldamount}</ins>

@@ -78,6 +78,7 @@ URL: https://www.freshdesignweb.com/ustora/
                             <li><a href="artistPaintApprove">Offers</a></li>
                             <li><a href="artistPayStub">Pay Stub</a></li>
                             <li><a href="artistCheckPage">Checks</a></li>
+                            <li><a href="artistManageAccount">Manage Account</a></li>
                         </ul>
                     </ul>
                 </ul>
@@ -108,14 +109,22 @@ URL: https://www.freshdesignweb.com/ustora/
                     <tbody>
                     <c:forEach items="${repo}" var="repo">
                     <tr>
-                        <td><c:out value="${repo.soldamount}" /></td>
-                        <td><c:out value="${repo.soldamount}" /></td>
+                        <td><c:out value="${hasArtwo[repo.artworkid]}" /></td>
+                        <td><c:out value="${session.username}" /></td>
                         <td><c:out value="${repo.creationdate}" /></td>
                         <td><c:out value="${repo.solddate}" /></td>
-                        <td><c:out value="${repo.soldamount}" /></td>
+                        <td><c:out value="${hasPrice[repo.artworkid]}" /></td>
                         <td><c:out value="${repo.soldamount}" /></td>
                     </tr>
                     </c:forEach>
+                    <tr class="cart-subtotal">
+                        <th></th>
+                        <td></td>
+                        <th></th>
+                        <td></td>
+                        <td>Total</td>
+                        <th>${total}</th>
+                    </tr>
                     </tbody>
                 </table>
                 <input type="button" id="btnExport" value="Export" onclick="Export()" />

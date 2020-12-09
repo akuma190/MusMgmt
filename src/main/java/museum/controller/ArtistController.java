@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,10 +52,32 @@ public class ArtistController {
     @Autowired
     CharacteristicsRepository characteristicsRepository;
 
+    @Autowired
+    CustomerRepository customerRepository;
+
+
     //to generate the links of all the artist pages pages.
     @RequestMapping("/artistIndex")
     public String artistIndex(@SessionAttribute("session") Session session,ModelMap model){
         model.put("session",session);
+        List<report> list=new ArrayList<report>();
+        if(session.getType().equals("artist")){
+            artist arti=artistRepo.findOne(session.getUsername());
+            System.out.println(reportRepository.findOne(arti.getArtist_id()));
+            list=reportRepository.findOne(arti.getArtist_id());
+        }
+        if(session.getType().equals("collector")){
+            collector col=collectorRepository.findOne(session.getUsername());
+            System.out.println(reportRepository.findOne(col.getCollector_id()));
+            list=reportRepository.findOne(col.getCollector_id());
+        }
+
+        HashMap<Integer,String> hasArtwo=new HashMap<Integer,String>();
+        for(artwork ar:artworkRepository.findAll()){
+            hasArtwo.put(ar.getArtworkid(),ar.getArtworkname());
+        }
+        model.put("list",list);
+        model.put("hasArtwo",hasArtwo);
         return "artist_index";
     }
 
@@ -88,25 +111,38 @@ public class ArtistController {
         model.put("session",session);
         System.out.println(cheqId);
         report repo=reportRepository.findByReportId(cheqId);
-        System.out.println(repo);
+        users user=usersRepo.findOne(session.getUsername());
+        customer cust=customerRepository.findOne(repo.getCustomerid());
+        users myCustomer=usersRepo.findOne(cust.getCustomername());
+        artwork artWo=artworkRepository.findOne(repo.getArtworkid());
+        double finAmount=repo.getSoldamount();
+        double comission=(.1 *finAmount);
+        double salesComm=(comission/2);
+        double OwnerComm=(comission/2);
+        double total=(finAmount-comission);
+        model.put("total",total);
+        model.put("salesComm",salesComm);
+        model.put("OwnerComm",OwnerComm);
+        model.put("user",user);
         model.put("repo",repo);
+        model.put("myCustomer",myCustomer);
+        model.put("artWo",artWo);
         return "artist_check";
     }
 
     @RequestMapping("/artistCheckPage")
     public String artistCheckPage(@SessionAttribute("session") Session session,ModelMap model){
         model.put("session",session);
-        ArrayList<report> repo=new ArrayList<report>();
-        if(session.getType().equals("collector")){
-            collector artVar=collectorRepository.findOne(session.getUsername());
-            repo= (ArrayList<report>) reportRepository.findOne(artVar.getCollector_id());
-        }else if(session.getType().equals("artist")){
-            artist artVar=artistRepo.findOne(session.getUsername());
-            repo= (ArrayList<report>) reportRepository.findOne(artVar.getArtist_id());
+        artist arti=artistRepo.findOne(session.getUsername());
+        List<report> repo=reportRepository.findOne(arti.getArtist_id());
+        HashMap<report,artwork> hash=new HashMap<report,artwork>();
+        for(report re:repo){
+            System.out.println(re);
+            // System.out.println(artworkRepository.findOne(re.getArtworkid()));
+            hash.put(re,artworkRepository.findOne(re.getArtworkid()));
         }
-
-        System.out.println(repo);
-        model.put("repo",repo);
+        System.out.println(hash);
+        model.put("hash",hash);
         return "artist_check_page";
     }
 
@@ -114,6 +150,8 @@ public class ArtistController {
     public String artistPayStub(ModelMap model, @SessionAttribute("session") Session session) {
         model.put("session",session);
         ArrayList<report> repo=new ArrayList<report>();
+        double total=0.0;
+        //HashMap<Integer,String> hasName=new HashMap<Integer,String>();
         if(session.getType().equals("collector")){
             collector var=collectorRepository.findOne(session.getUsername());
             repo= (ArrayList<report>) reportRepository.findOne(var.getCollector_id());
@@ -123,7 +161,24 @@ public class ArtistController {
             repo= (ArrayList<report>) reportRepository.findOne(var.getArtist_id());
         }
         System.out.println(repo);
+        for(report dat:repo){
+            total=total+dat.getSoldamount();
+        }
+
+        HashMap<Integer,String> hasArtwo=new HashMap<Integer,String>();
+        for(artwork ar:artworkRepository.findAll()){
+            hasArtwo.put(ar.getArtworkid(),ar.getArtworkname());
+        }
+
+        HashMap<Integer,Integer> hasPrice=new HashMap<Integer,Integer>();
+        for(artwork ar:artworkRepository.findAll()){
+            hasPrice.put(ar.getArtworkid(),ar.getPrice());
+        }
         model.put("repo",repo);
+        model.put("hasPrice",hasPrice);
+        model.put("total",total);
+        model.put("hasArtwo",hasArtwo);
+        model.put("session",session);
         return "artist_pay_stub";
     }
 
@@ -140,7 +195,7 @@ public class ArtistController {
         if(session.getType().equals("collector")){
             collector artVar=collectorRepository.findOne(session.getUsername());
             art.setArtcolid(artVar.getCollector_id());
-            if(artworkRepository.findCountForApproval(artVar.getCollector_id())>10){
+            if(artworkRepository.findCountForApproval(artVar.getCollector_id())!=null && artworkRepository.findCountForApproval(artVar.getCollector_id())>10){
                 art.setStatus("in_museum");
             }else{
                 art.setStatus("waiting_for_approval");
@@ -148,7 +203,7 @@ public class ArtistController {
         }else if(session.getType().equals("artist")){
             artist artVar=artistRepo.findOne(session.getUsername());
             art.setArtcolid(artVar.getArtist_id());
-            if(artworkRepository.findCountForApproval(artVar.getArtist_id())>=10){
+            if(artworkRepository.findCountForApproval(artVar.getArtist_id())!=null && artworkRepository.findCountForApproval(artVar.getArtist_id())>=10){
                 art.setStatus("in_museum");
             }else{
                 art.setStatus("waiting_for_approval");
@@ -156,16 +211,17 @@ public class ArtistController {
         }
         System.out.println(art);
 
-//        artworkRepository.save(art);
+        artworkRepository.save(art);
         int max=0;
         for(artwork artVar:artworkRepository.findAll()){
             if(artVar.getArtworkid()>max){
                 max=artVar.getArtworkid();
             }
         }
+        System.out.println(max);
         charect.setArtworkid(max);
         System.out.println(charect);
-//        characteristicsRepository.save(charect);
+        characteristicsRepository.save(charect);
         return "redirect:artistAddPaintings";
     }
 
@@ -175,26 +231,36 @@ public class ArtistController {
         System.out.println("hello"+eventArtWorkRepository.findByArt(artId));
         quotation quote=quotationRepository.findOne(artId);
         artwork artWo=artworkRepository.findOne(artId);
+        report myReport=new report();
         if(eventArtWorkRepository.findByArt(artId)!=null){
             eventArtwork eventArt=eventArtWorkRepository.findByArt(artId);
             eventArt.setStatus("sold");
             quote.setStatus("sold");
             artWo.setStatus("sold");
-//            eventArtWorkRepository.save(eventArt);
-//            quotationRepository.save(quote);
-//            artworkRepository.save(artWo);
+            eventArtWorkRepository.save(eventArt);
+            quotationRepository.save(quote);
+            artworkRepository.save(artWo);
             System.out.println(eventArt);
             System.out.println(quote);
             System.out.println(artWo);
         }else{
             quote.setStatus("sold");
             artWo.setStatus("sold");
-//            eventArtWorkRepository.save(eventArt);
-//            quotationRepository.save(quote);
-//            artworkRepository.save(artWo);
+            quotationRepository.save(quote);
+            artworkRepository.save(artWo);
             System.out.println(quote);
             System.out.println(artWo);
         }
+
+        myReport.setEventid(quote.getEventid());
+        myReport.setArtworkid(quote.getArtworkid());
+        myReport.setEmployeeid(quote.getEmployeeid());
+        myReport.setSoldamount(quote.getQuotedprice());
+        myReport.setCreationdate(quote.getCreationdate());
+        myReport.setArtcolid(quote.getArtcolid());
+        myReport.setSolddate(LocalDate.now().toString());
+        myReport.setCustomerid(quote.getUsername());
+        reportRepository.save(myReport);
         return "redirect:../artistPaintApprove";
     }
 
@@ -225,5 +291,21 @@ public class ArtistController {
             System.out.println(artWo);
         }
         return "redirect:artistPaintApprove";
+    }
+
+    @RequestMapping("/artistManageAccount")
+    public String artistManageAccount(ModelMap model, @SessionAttribute("session") Session session){
+        model.put("session",session);
+        users user=usersRepo.findOne(session.getUsername());
+        model.put("user",user);
+        return "artist_manage_account";
+    }
+
+    @RequestMapping("/artistChangeAccount")
+    public String artistChangeAccount(ModelMap model,@SessionAttribute("session") Session session,users user){
+        model.put("session",session);
+        System.out.println(user);
+        usersRepo.save(user);
+        return "redirect:artistManageAccount";
     }
 }

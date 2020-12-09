@@ -76,6 +76,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <li><a href="artistPaintApprove">Offers</a></li>
                     <li><a href="artistPayStub">Pay Stub</a></li>
                     <li><a href="artistCheckPage">Checks</a></li>
+                    <li><a href="artistManageAccount">Manage Account</a></li>
                 </ul>
             </div>
         </div>

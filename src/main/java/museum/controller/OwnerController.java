@@ -52,6 +52,9 @@ public class OwnerController {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    CharacteristicsRepository characteristicsRepository;
+
 
     //to generate the links of all the artist pages pages.
     @RequestMapping("/ownerIndex")
@@ -101,15 +104,28 @@ public class OwnerController {
         HashMap<report,artwork> hash=new HashMap<report,artwork>();
         ArrayList<String> arr=new ArrayList<String>();
         int sum=0;
+        HashMap<Integer,String> hashName=new HashMap<Integer,String>();
         for(report re:listRepo){
             hash.put(re,artworkRepository.findOne(re.getArtworkid()));
+            System.out.println(artworkRepository.findOne(re.getArtworkid()).getArtist_type());
+            if(artworkRepository.findOne(re.getArtworkid()).getArtist_type().equals("collector")){
+                for(collector col:collectorRepository.findAll()){
+                    hashName.put(col.getCollector_id(),col.getCollector_name());
+                }
+            }else{
+                for(artist ar:artistRepo.findAll()){
+                    hashName.put(ar.getArtist_id(),ar.getArtist_name());
+                }
+            }
             sum=sum+re.getSoldamount();
             artist arti=artistRepo.findOneById(re.getArtcolid());
+
 
         }
         System.out.println(hash);
         map.put("hash",hash);
         map.put("sum",sum);
+        map.put("hashName",hashName);
         return "owner_check_report";
     }
 
@@ -125,7 +141,8 @@ public class OwnerController {
     @RequestMapping("/ownerManageArtwork")
     public String ownerManageArtwork(@SessionAttribute("session") Session session,ModelMap map){
         map.put("session",session);
-
+        List<artwork> artWo=artworkRepository.findAllForEvent();
+        map.put("artWo",artWo);
         return "owner_manage_artwork";
     }
 
@@ -232,9 +249,11 @@ public class OwnerController {
         return "owner_add_paintings";
     }
 
-    @RequestMapping("/ownerPaintingDetails")
-    public String ownerPaintingDetails(ModelMap model,@SessionAttribute("session") Session session){
+    @RequestMapping("/ownerPaintingDetails/{artId}")
+    public String ownerPaintingDetails(@PathVariable Integer artId,ModelMap model,@SessionAttribute("session") Session session){
         model.put("session",session);
+        artwork art=artworkRepository.findOne(artId);
+        characteristics chart=characteristicsRepository.findOne(artId);
         return "owner_painting_details";
     }
 
@@ -263,17 +282,66 @@ public class OwnerController {
     @RequestMapping("/ownerEditEmployee/{username}")
     public String ownerEditEmployee(@PathVariable String username,ModelMap model,@SessionAttribute("session") Session session){
         model.put("session",session);
+        System.out.println("edit"+username);
+        users user=usersRepo.findOne(username);
+        model.put("user",user);
 
-        return "redirect:ownerPaintingsApprove";
+        return "owner_edit_employee";
+
     }
+
+    @RequestMapping("/ownerEditArtwork/{artId}")
+    public String ownerEditEmployee(@PathVariable Integer artId,ModelMap model,@SessionAttribute("session") Session session){
+        model.put("session",session);
+        System.out.println("edit"+artId);
+        artwork artWo=artworkRepository.findOne(artId);
+        model.put("artWo",artWo);
+        characteristics charec=characteristicsRepository.findOne(artId);
+        System.out.println(charec);
+        model.put("charec",charec);
+
+        return "owner_edit_artwork";
+
+    }
+
+    @RequestMapping("/ownerFinalEditArtwork")
+    public String ownerFinalEditArtwork(ModelMap model,@SessionAttribute("session") Session session,artwork artwo,characteristics chare){
+        model.put("session",session);
+        System.out.println(artwo);
+        System.out.println(chare);
+//        artworkRepository.save(artwo);
+//        characteristicsRepository.save(chare);
+        return "redirect:ownerManageArtwork";
+
+    }
+
+    @RequestMapping("/ownerFinalEditEmployee")
+    public String ownerFinalEditEmployee(ModelMap model,@SessionAttribute("session") Session session,users user){
+        model.put("session",session);
+        System.out.println("edit2"+user);
+        users userChange=usersRepo.findOne(user.getUsername());
+        userChange.setFirstname(user.getFirstname());
+        userChange.setFirstname(user.getLastname());
+        System.out.println(userChange);
+        //usersRepo.save(userChange);
+        if(authoritiesRepository.findOne(user.getUsername()).getAuthority().equals("collector")){
+            return "redirect:ownerManageCollectors";
+        }
+        else if(authoritiesRepository.findOne(user.getUsername()).getAuthority().equals("artist")){
+            return "redirect:ownerManageArtists";
+        }
+        else{
+            return "redirect:ownerManageCustomers";
+        }
+
+    }
+
+
 
     @RequestMapping("/ownerDeleteEmployee/{username}")
     public String ownerDeleteEmployee(@PathVariable String username,ModelMap model,@SessionAttribute("session") Session session){
-        model.put("session",session);
-        System.out.println(artId);
-        artwork art=artworkRepository.findOne(artId);
-        artworkRepository.delete(art);
-        return "redirect:ownerPaintingsApprove";
+        System.out.println("delete"+username);
+        return "redirect:../ownerManageCustomers";
     }
 
     @RequestMapping("/ownerExtendPainting/{artId}")
@@ -322,6 +390,7 @@ public class OwnerController {
             eventArt.setArtworkid(Integer.parseInt(ir));
             eventArt.setSalesperson(art.getSalesperson());
             eventArt.setEventartid(max);
+            eventArt.setStatus("in_event");
             System.out.println(eventArt);
             eventArtWorkRepository.save(eventArt);
             art.setStatus("in_event");
@@ -330,5 +399,21 @@ public class OwnerController {
         }
 
         return "owner_create_event";
+    }
+
+    @RequestMapping("/ownerManageAccount")
+    public String ownerManageAccount(ModelMap model,@SessionAttribute("session") Session session){
+        model.put("session",session);
+        users user=usersRepo.findOne(session.getUsername());
+        model.put("user",user);
+        return "owner_manage_account";
+    }
+
+    @RequestMapping("/changeAccount")
+    public String changeAccount(ModelMap model,@SessionAttribute("session") Session session,users user){
+        model.put("session",session);
+        System.out.println(user);
+        usersRepo.save(user);
+        return "redirect:ownerManageAccount";
     }
 }

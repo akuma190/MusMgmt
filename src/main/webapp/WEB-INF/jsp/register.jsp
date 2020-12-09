@@ -54,12 +54,10 @@
                             <input name="Register" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Register">
                         </form>
                         <%--                <a href="#!" class="forgot-password-link">Forgot password?</a>--%>
-                        <c:if test="${status == 'not_exists'}">
+                        <c:if test="${status == 'user_exixts'}">
 
-                            This username is already being used, please enter a different username.
-                            <!--button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button-->
+                            <p style="color:red">User Already Exists,Try a new user name.</p>
+
                         </c:if>
 
                     </div>
