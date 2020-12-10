@@ -194,7 +194,9 @@ public class OwnerController {
 //        System.out.println(eventRepository.findCountById(1));
         HashMap<event,Integer> hash=new HashMap<event,Integer>();
         for(event re:eventRepository.findByEventId()){
-            hash.put(re,eventRepository.findCountById(re.getEventid()));
+            System.out.println(eventRepository.findCountById(re.getEventid()));
+           // if()
+            hash.put(re,eventRepository.findCountById(re.getEventid())==null?0:eventRepository.findCountById(re.getEventid()));
             System.out.println(hash);
         }
         map.put("hash",hash);
@@ -208,7 +210,11 @@ public class OwnerController {
         int deleteId=eventId;
         System.out.println(eventRepository.findOne(deleteId));
         //delete from event
+        eventRepository.delete(eventRepository.findOne(deleteId));
         System.out.println(eventArtWorkRepository.findMyEventList(deleteId));
+        for(eventArtwork eveart:eventArtWorkRepository.findMyEventList(deleteId)){
+            eventArtWorkRepository.delete(eveart);
+        }
         //delete from artwork list
         return "redirect:../ownerManageEvents";
     }
