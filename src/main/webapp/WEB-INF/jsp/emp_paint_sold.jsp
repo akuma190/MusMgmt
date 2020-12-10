@@ -118,12 +118,21 @@
                                     <td><c:out value="${hashArtist[repo.artcolid]}" /></td>
 
                                 </c:if>
-                                <td><c:out value="${hashEvent[repo.eventid]}" /></td>
+                                <c:if test="${hashEvent[repo.eventid] == null}">
+
+                                    <td><c:out value="One man Show" /></td>
+
+                                </c:if>
+                                <c:if test="${hashEvent[repo.eventid] != null}">
+
+                                    <td><c:out value="${hashEvent[repo.eventid]}" /></td>
+
+                                </c:if>
                                 <td><c:out value="${repo.creationdate}" /></td>
                                 <td><c:out value="${repo.solddate}" /></td>
                                 <td><c:out value="${hashArtPrice[repo.artworkid]}" /></td>
                                 <td><c:out value="${repo.soldamount}" /></td>
-                                <td><c:out value="${hashCust[repo.customerid]}" /></td>
+                                <td><c:out value="${repo.customerid}" /></td>
                             </tr>
                         </c:forEach>
                         </tbody>
