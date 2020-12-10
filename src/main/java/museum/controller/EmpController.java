@@ -92,18 +92,14 @@ public class EmpController {
             //System.out.println(ar);
             hashEvent.put(ar.getEventid(),ar.getEventname());
         }
-        HashMap<Integer,String> hashCust=new HashMap<Integer,String>();
-        for(customer ar:customerRepository.findAll()){
-            //System.out.println(ar);
-            hashCust.put(ar.getCustomerid(),ar.getCustomername());
-        }
+
 
         model.put("hashArt",hashArt);
         model.put("hashArtist",hashArtist);
         model.put("hashCol",hashCol);
         model.put("hashArtPrice",hashArtPrice);
         model.put("hashEvent",hashEvent);
-        model.put("hashCust",hashCust);
+
         model.put("repo",repo);
         return "emp_paint_sold";
     }
